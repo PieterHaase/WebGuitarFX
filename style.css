@@ -1,0 +1,88 @@
+html, body {
+    height: 90%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background: rgb(0,0,0);
+}
+
+div {
+    font-family: Tahoma;
+    font-size: 1.01em;
+    color: azure;
+}
+
+#headline {
+    font-family: Impact;
+    font-style: italic;
+    font-variant: small-caps;
+    font-size: 2.8em;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    text-shadow: 0px 0px 5px black, 0px 0px 50px rgb(207, 207, 207); 
+}
+
+#mainContainer {
+    background: rgb(50, 50, 50);
+    padding: 40px;
+    float: center;
+}
+
+#effectPedal {
+    border-radius: 10px;
+    border: 2px solid black;
+    background-image: linear-gradient(#73AD21, rgb(56, 83, 17));
+    /*background: #73AD21;  */
+    padding: 20px;
+    width: 240px;
+    height: 350px;
+    box-shadow: 5px 8px 10px rgba(0, 0, 0, .5); 
+}
+
+#panel {
+    height: 40%;
+    border-radius: 10px;
+    border: 2px solid black;
+    background-image: linear-gradient(rgb(179, 179, 179), rgb(92, 92, 92));
+    padding: 20px;
+}
+
+#title {
+    font-family: Impact;
+    font-variant: small-caps;
+    font-style: italic;
+    font-size: 1.8em;
+    color: white;
+    text-align: center;
+    -webkit-text-stroke: 1px black;
+    text-shadow: 0px 0px 1px black;
+}
+
+#gainSlider {
+    display: block;
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+}
+
+#led {
+    border-radius:50%;
+    height: 15px;
+    width: 15px;
+    margin: auto;
+    margin-top: 5%;
+    border: 2px solid black;
+    background-image: linear-gradient(rgb(231, 50, 50), rgb(128, 25, 25));
+    box-shadow: 0px 0px 30px rgb(231, 50, 50); 
+}
+
+#button {
+    border-radius:50%;
+    height: 100px;
+    width: 100px;
+    margin: auto;
+    margin-top: 15%;
+    border: 2px solid rgb(56, 56, 56);
+    background-image: linear-gradient(rgb(179, 179, 179), rgb(92, 92, 92));
+}

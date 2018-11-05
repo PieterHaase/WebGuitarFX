@@ -1,16 +1,19 @@
 <html>
     <head>
-        <title>AVPRG_Audio1</title>
+        <title>WebGuitarFX</title>
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
 <body>
     <h1 id="headline">WebGuitarFX</h1>
+    <div id="sidebar">
+            <button id="playButton" type="button">PLAY</button>
+    </div>
     <div id="mainContainer">
         <div id="effectPedal">
             <div id="panel">
-                <div id="title">Effect</div>
-                <div>Gain:</div>
-                <input id="gainSlider" type="range" name="gain" min="0" max="10">
+                <div id="title">Filter</div>
+                <div>Frequency:</div>
+                <input type="range" min="50" max="5000" value="1000" class="slider" id="freqSlider">
             </div>
             <div id="led"></div>
             <div id="button"></div>

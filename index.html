@@ -2,24 +2,26 @@
     <head>
         <title>WebGuitarFX</title>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="effectPedal.css">
     </head>
 <body>
-    <h1 id="headline">WebGuitarFX</h1>
-    <div id="sidebar">
-            <button id="playButton" type="button">PLAY</button>
-    </div>
-    <div id="mainContainer">
-        <div id="effectPedal">
-            <div id="panel">
-                <div id="title">Filter</div>
-                <div>Frequency:</div>
-                <input type="range" min="50" max="5000" value="1000" class="slider" id="freqSlider">
-            </div>
-            <div id="led"></div>
-            <div id="button"></div>
+<!--    <h1 id="headline">WebGuitarFX</h1>  -->
+    <div class="header"><h2>WebGuitarFX</h2></div>
+    <div class="mainWindow">
+        <div class="sidebarLeft">
+          <div id="playButton">PLAY</div></div>
+        <div id="effectPedalWindow">
+            <div id="addEffectButton">+</div>
         </div>
-    </div>
+        <div class="sidebarRight"></div>
+      </div>
+      <div class="footer"></div>
 
+
+    <script src="filter.js"></script>
+    <script src="tremolo.js"></script>
+    <script src="effectChain.js"></script>
     <script src="script.js"></script>
+
 </body>
 </html>

@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>WebGuitarFX</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="effectPedal.css">
+    </head>
+<body>
+    <h1 id="headline">WebGuitarFX</h1>
+    <div id="sidebar">
+            <div id="playButton">PLAY</div>
+    </div>
+    <div id="mainContainer">
+        <div class="effectPedal">
+            <div class="frontPanel">
+                <div class="effectTitle">Tremolo</div>
+                <div class="paramName1">Mix:</div>
+                <input class="parmSlider1" type="range" min="0" max="100" value="50" id="freqSlider">
+            </div>
+            <div class="led"></div>
+            <div class="onOffButtonRing">
+                <div class="onOffButton"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="filter.js"></script>
+    <script src="tremolo.js"></script>
+    <script src="effectChain.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>

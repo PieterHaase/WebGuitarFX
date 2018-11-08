@@ -1,11 +1,43 @@
-var playButton = document.getElementById("playButton");
-var freqSlider = document.getElementById("freqSlider");
-var isPlaying = false;
-
 var context = new AudioContext();
-var sound = new Audio("sound.wav");
+var sound = new Audio("guitar_sample.mp3");
 var source = context.createMediaElementSource(sound);
-var filter = context.createBiquadFilter();
+
+sound.loop = true;
+
+//--- Effektkette
+var effectChain = new EffectChain(context, source);
+//var filter = new Filter(context);
+//var tremolo = new Tremolo(context);
+//effectChain.addEffect(filter);
+//effectChain.addEffect(tremolo);
+//effectChain.getOutput().connect(context.destination);
+//effectChain.addEffect(tremolo);
+
+//source.connect(tremolo.getInput());
+
+/*
+source.connect(filter.getInput());
+filter.getOutput().connect(tremolo.getInput());
+tremolo.getOutput().connect(context.destination);
+*/
+
+//filter.getOutput().connect(context.destination);
+
+//--- GUI Steuerung
+
+
+
+/*
+var einzufuegendesObjekt = document.createElement("a");
+einzufuegendesObjekt.href = "http://www.html-seminar.de";
+einzufuegendesObjekt.innerHTML = "Tutorial für HTML, CSS und JavaScript";
+einzufuegendesObjekt.style.backgroundColor = "#FFFF00";
+
+document.getElementById("effectPedalWindow").appendChild(einzufuegendesObjekt);
+*/
+
+var playButton = document.getElementById("playButton");
+var isPlaying = false;
 
 playButton.addEventListener("click", function () {
     if (isPlaying) {
@@ -19,27 +51,9 @@ playButton.addEventListener("click", function () {
     isPlaying = !isPlaying;
 });
 
-freqSlider.addEventListener("mousemove", function() {
-    filter.frequency.value = this.value;
+document.getElementById("addEffectButton").addEventListener("click", function () {
+    //var filter = new Filter(context);
+    //effectChain.addEffect(filter);
+    var tremolo = new Tremolo(context);
+    effectChain.addEffect(tremolo);
 });
-
-//var oscillator = context.createOscillator();
-//oscillator.type = "triangle";
-//var sineGain = context.createGain();
-//sineGain.gain.value = 970;
-//oscillator.frequency.value = 0.2;
-//oscillator.connect(sineGain);
-//sineGain.connect(filter.frequency);
-//oscillator.start();
-
-sound.loop = true;
-source.connect(filter);
-filter.connect(context.destination);
-
-filter.type = "bandpass";
-filter.frequency.value = 1000;
-filter.Q.value = 2;
-filter.gain.value = -20;
-
-// sound.play();
-

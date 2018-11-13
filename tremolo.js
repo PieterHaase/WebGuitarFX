@@ -1,48 +1,88 @@
-var dryGain;
-var wetGain;
+//var dryGain;
+//var wetGain;
+//var paramID1;
+//var sliderID1;
 
 function Tremolo(thisContext) {
-    
     var effectName = 'tremolo';
-    var paramName1 = 'tremoloMix';
-    var sliderName1 = 'tremoloMixSlider';
+    this.effectName = effectName;
+    this.paramID1 = 'tremoloMix';
+    var paramID1 = this.paramID1;
+    this.paramUnit1 = '%';
+    this.paramMin1 = 0;
+    this.paramMax1 = 100;
+    this.paramValue1 = 50;
+    this.sliderID1 = 'tremoloMixSlider';
+    var sliderID1 = this.sliderID1;
+
     var on = true;
 
-    this.inputGain = thisContext.createGain();
-    this.inputGain.gain.value = 1;
+    var inputGain = thisContext.createGain();
+    inputGain.gain.value = 1;
 
-    this.gain = thisContext.createGain();
-    this.gain.gain.value = 1;
+    var gain = thisContext.createGain();
+    gain.gain.value = 1;
 
-    wetGain = thisContext.createGain();
-    wetGain.gain.value = 0.25;
-
-    dryGain = thisContext.createGain();
+    var dryGain = thisContext.createGain();
     dryGain.gain.value = 0.75;
+ //   this.dryGain = dryGain;
 
-    this.outputGain = thisContext.createGain();
-    this.outputGain.gain.value = 1;
+    var wetGain = thisContext.createGain();
+    wetGain.gain.value = 0.25;
+ //   this.wetGain = wetGain;
 
-    this.inputGain.connect(dryGain);
-    this.inputGain.connect(this.gain);
-    dryGain.connect(this.outputGain);
-    this.gain.connect(wetGain);
-    wetGain.connect(this.outputGain);
+    var outputGain = thisContext.createGain();
+    outputGain.gain.value = 1;
 
-    this.oscillator = thisContext.createOscillator();
-    this.oscillator.type = "sine";
-    this.oscillator.frequency.value = 10;
-    this.oscillator.connect(this.gain.gain);
-    this.oscillator.start(); 
+    inputGain.connect(dryGain);
+    inputGain.connect(gain);
+    dryGain.connect(outputGain);
+    gain.connect(wetGain);
+    wetGain.connect(outputGain);
+
+    var oscillator = thisContext.createOscillator();
+    oscillator.type = "sine";
+    oscillator.frequency.value = 10;
+    oscillator.connect(gain.gain);
+    oscillator.start(); 
     
-    insertTremoloIntoGUI();    
+    //insertTremoloIntoGUI();    
+    insertIntoGUI(this);
+    //document.getElementById(this.sliderID1).addEventListener("input", slider1Function);
+    //    addListeners(this);
 
-    document.getElementById(sliderName1).addEventListener("input", function() {
+    function slider1Function() {
+        if (on) {
+            wetGain.gain.value = document.getElementById(sliderID1).value/200;
+            dryGain.gain.value = 1-(wetGain.gain.value);
+        }
+        document.getElementById(paramID1).innerHTML = "mix: " + this.value + " %";
+        //console.log("Tremolo Listener added");
+    }
+
+    function onOffButtonFunction() {
+        if (on){
+            wetGain.gain.value = 0;
+            dryGain.gain.value = 1;
+            document.getElementById(effectName + 'LED').className = "ledOff";
+            on = false;
+        }
+        else {
+            wetGain.gain.value = document.getElementById(sliderID1).value/150;
+            dryGain.gain.value = 1-(wetGain.gain.value);
+            document.getElementById(effectName + 'LED').className = "led";
+            on = true;
+        }
+    }
+/*
+    document.getElementById(this.sliderID1).addEventListener("input", function() {
         if (on) {
             wetGain.gain.value = this.value/200;
-            dryGain.gain.value = 1-(this.value/200);
+            dryGain.gain.value = 1-(wetGain.gain.value);
         }
-        document.getElementById(paramName1).innerHTML = "mix: " + this.value + " %";
+        document.getElementById(paramID1).innerHTML = "mix: " + this.value + " %";
+        //console.log("Tremolo Listener added");
+        document.getElementById(this.sliderID1).addEventListener("input", this);
     });
 
     document.getElementById("tremoloOnOff").addEventListener("click", function() {
@@ -53,37 +93,44 @@ function Tremolo(thisContext) {
             on = false;
         }
         else {
-            wetGain.gain.value = document.getElementById(sliderName1).value/150;
-            dryGain.gain.value = 1-(document.getElementById(sliderName1).value/150);
+            wetGain.gain.value = document.getElementById(sliderID1).value/150;
+            dryGain.gain.value = 1-(wetGain.gain.value);
             document.getElementById("tremoloLED").className = "led";
             on = true;
         }
-        
+        //console.log("Tremolo On Off Listener added");
     });
-
-    function insertTremoloIntoGUI() {   
-        var string = 
-        '   <div class="effectContainer">' +
-        '      <div class="effectPedal" id="' + effectName + '">' +
-        '          <div class="frontPanel">' +
-        '          <div class="effectTitle">' + effectName + '</div>' +
-        '          <div class="paramName1" id="' + paramName1 + '">mix: 50%</div>' +
-        '              <input class="paramSlider1" id="' + sliderName1 + '" type="range" min="0" max="100" value="50">' +
-        '           </div>' +
-        '          <div class="led" id="tremoloLED"></div>' +
-        '          <div class="onOffButtonRing">' +
-        '              <div class="onOffButton" id="tremoloOnOff"></div>' +
-        '          </div>' +
-        '      </div>' +
-        '   </div>';
-        document.getElementById("effectPedalWindow").innerHTML += string;
-    }
+*/
+    
 
     Tremolo.prototype.getInput = function() {
-        return this.inputGain;
+        return inputGain;
     };
     Tremolo.prototype.getOutput = function() {
-        return this.outputGain;
+        return outputGain;
     };
+
+    Tremolo.prototype.addListeners = function() {
+        document.getElementById(this.sliderID1).addEventListener("input", slider1Function);
+        document.getElementById(this.effectName + 'OnOff').addEventListener("click", onOffButtonFunction);
+    };
+
 }
 
+function insertTremoloIntoGUI() {   
+    var string = 
+    '   <div class="effectContainer">' +
+    '      <div class="effectPedal" id="' + effectName + '">' +
+    '          <div class="frontPanel">' +
+    '          <div class="effectTitle">' + effectName + '</div>' +
+    '          <div class="paramName1" id="' + paramName1 + '">mix: 50%</div>' +
+    '              <input class="paramSlider1" id="' + sliderName1 + '" type="range" min="0" max="100" value="50">' +
+    '           </div>' +
+    '          <div class="led" id="tremoloLED"></div>' +
+    '          <div class="onOffButtonRing">' +
+    '              <div class="onOffButton" id="tremoloOnOff"></div>' +
+    '          </div>' +
+    '      </div>' +
+    '   </div>';
+    document.getElementById("effectPedalWindow").innerHTML += string;
+}

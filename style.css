@@ -3,6 +3,12 @@ html, body {
     margin: 0;
 }
 
+div {
+    -webkit-user-select: none;
+     -moz-user-select: -moz-none;
+      -ms-user-select: none;
+          user-select: none;
+}
 .header {
     position: relative;
     text-align: center;

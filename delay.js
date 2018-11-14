@@ -61,7 +61,7 @@ function Delay(thisContext) {
     delay3Gain.connect(wetGain);
     wetGain.connect(this.outputGain);
 
-    insertIntoGUI(this);
+    //insertIntoGUI(this);
 
     function slider1Function() {
         delayTime = document.getElementById(sliderID1).value/1000;

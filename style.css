@@ -3,6 +3,11 @@ html, body {
     margin: 0;
 }
 
+::-webkit-scrollbar { height: 10px; }
+::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.0); }
+::-webkit-scrollbar-thumb { background: rgba(121, 121, 121, 0.2); border-radius: 5px;}
+::-webkit-scrollbar-thumb:hover { background: rgba(202, 202, 202, 0.2) }
+
 div {
     -webkit-user-select: none;
      -moz-user-select: -moz-none;
@@ -77,6 +82,10 @@ div {
     left: 6em;
     color: white;
     background: rgb(63, 63, 63);
+    overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+
 }
 
 #addEffectButton {
@@ -85,7 +94,7 @@ div {
     text-align: center;
     font-family: Impact;
     font-size: 3em;
-    background: rgb(51, 51, 51);
+    background: rgba(0, 0, 0, 0.5);
     position: absolute;
     top: 50%;
     right: 1em;
@@ -95,11 +104,11 @@ div {
 }
 
 #addEffectButton:hover {
-    background: rgb(121, 121, 121);
+    background: rgba(121, 121, 121, 0.7);
 }
 
 #addEffectButton:active {
-    background: rgb(202, 202, 202);
+    background: rgba(202, 202, 202, 0.7);
 }
 
 .sidebarRight {

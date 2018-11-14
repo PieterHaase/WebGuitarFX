@@ -1,12 +1,42 @@
 .effectContainer {
+    position: relative;
     height: 100%;
     width: 18em;
-    float: left;
+/*    float: left; */
+    display: inline-block;
 }
 
 #filter {background-image: linear-gradient(rgb(96, 170, 255), rgb(26, 25, 95));}
 #tremolo {background-image: linear-gradient(rgb(255, 49, 94), rgb(82, 12, 29));}
 #delay {background-image: linear-gradient(rgb(223, 223, 223), rgb(63, 63, 63));}
+
+.paramSlider1 {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 30px;
+    background: none;
+    outline: none;
+}
+
+.paramSlider1::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 17px;
+    height: 17px;
+    margin-top: -5px;
+    border-radius: 50%; 
+    background: rgb(175, 175, 175);
+    border: 2px solid #3f3f3f;
+}
+
+.paramSlider1::-webkit-slider-runnable-track {
+    height: 4px;
+    -webkit-appearance: none;
+    border-radius: 2px; 
+    background: rgb(92, 92, 92);
+}
+
+
 
 .effectPedal {
     position: absolute;
@@ -16,7 +46,7 @@
     transform: translateY(-50%);
     margin-right: 2em;
     margin-left: 2em;
-/*    float: left;  */
+    /*float: left;  */
     border-radius: 10px;
     border: 2px solid rgb(31, 31, 31);
 /*    background-image: linear-gradient(rgb(96, 125, 255), rgb(42, 40, 161)); */
@@ -28,6 +58,22 @@
 
 .effectPedal:hover{
     box-shadow: 5px 8px 10px rgba(0, 0, 0, .5), 0px 0px 20px rgba(255, 255, 255, .2); 
+}
+
+.removeButton {
+    font-family: Tahoma;
+    font-weight: bold;
+    position: absolute;
+    right: 0.3em;
+    top: 0.2em;
+    font-size: .9em;
+    text-align: center;
+    color: rgba(0,0,0,0.1);
+}
+
+.removeButton:hover {
+    color: rgba(0, 0, 0, .3);
+/*    text-shadow: 0px 0px 10px rgba(255, 255, 255, .9); */
 }
 
 .frontPanel {
@@ -42,12 +88,12 @@
     font-family: Impact;
     font-variant: small-caps;
     font-style: italic;
-    font-size: 1.8em;
+    font-size: 2.1em;
     color: white;
     text-align: center;
     margin-bottom: 45px;
     -webkit-text-stroke: 1px black;
-    text-shadow: 0px 0px 1px black;
+    text-shadow: 0px 0px 5px black;
 }
 
 .paramName1 {

@@ -8,6 +8,9 @@ function EffectChain(audioContext, source) {
     source.connect(audioContext.destination);
 
     EffectChain.prototype.addEffect = function(effect) {
+        if(effectArray.length == 0) {
+            source.disconnect(audioContext.destination);
+        }
         disconnectAll(audioContext.destination);
         effectArray.push(effect);
         updateRouting(audioContext.destination);
@@ -24,6 +27,11 @@ function EffectChain(audioContext, source) {
     EffectChain.prototype.getOutput = function() {
         return effectArray[0].getOutput();
     };
+    EffectChain.prototype.removeEffectAt = function(position) {
+        disconnectAll(audioContext.destination);
+        effectArray.splice(position, 1);
+        updateRouting(audioContext.destination);
+    }
 }
 
 function updateRouting(destination){
@@ -33,7 +41,7 @@ function updateRouting(destination){
         source.connect(destination);
     }
     if (effectArray.length == 1) {
-        source.disconnect(destination);
+        //source.disconnect(destination);
         source.connect(effectArray[0].getInput());
         effectArray[0].getOutput().connect(destination);
     }

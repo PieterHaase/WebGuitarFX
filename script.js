@@ -1,7 +1,6 @@
 var context = new AudioContext();
 var sound = new Audio("guitar_sample.mp3");
 var source = context.createMediaElementSource(sound);
-var effectCount = 0;
 
 sound.loop = true;
 
@@ -76,10 +75,41 @@ document.getElementById("addEffectButton").addEventListener("click", function ()
     //var filter = new Filter(context);
     //effectChain.addEffect(filter);
 
-    var EffectArray = [];
+var EffectArray = [];
+
+function updateGUI() {
+    var string = '';
+    for (var i=0; i<EffectArray.length; i++){
+        var effect = EffectArray[i];
+        var effectName = effect.effectName
+        var paramID1 = effect.paramID1;
+        var paramUnit1 = effect.paramUnit1;
+        var paramMin1 = effect.paramMin1;
+        var paramMax1 = effect.paramMax1;
+        var paramValue1 = effect.paramValue1;
+        var sliderID1 = effect.sliderID1;
+        var insert =
+        '   <div class="effectContainer">' +
+        '      <div class="effectPedal" id="' + effectName + '">' +
+        '          <div class="removeButton" id="' + effectName + 'XButton">X</div>' +
+        '          <div class="frontPanel">' +
+        '          <div class="effectTitle">' + effectName + '</div>' +
+        '          <div class="paramName1" id="' + paramID1 + '">' + paramID1 + ': ' + paramValue1 + paramUnit1 + '</div>' +
+        '              <input class="paramSlider1" id="' + sliderID1 + '" type="range" min="' + paramMin1 + '" max="' + paramMax1 + '" value="' + paramValue1 + '">' +
+        '           </div>' +
+        '          <div class="led" id="' + effectName + 'LED"></div>' +
+        '          <div class="onOffButtonRing">' +
+        '              <div class="onOffButton" id="' + effectName + 'OnOff"></div>' +
+        '          </div>' +
+        '      </div>' +
+        '   </div>';
+        string += insert;
+    }
+    document.getElementById("effectPedalWindow").innerHTML = string + '<div id="addEffectButton">+</div>';
+}
 
 function addEffectButtonFunction(){
-    switch(effectCount) {
+    switch(EffectArray.length) {
         case 0:
             var tremolo = new Tremolo(context);
             EffectArray.push(tremolo);
@@ -96,7 +126,7 @@ function addEffectButtonFunction(){
             effectChain.addEffect(delay);
         default:
     }
-    effectCount++;
+    updateGUI();
     console.log("CLICK!");
     for (var i=0; i<EffectArray.length; i++){
         EffectArray[i].addListeners();
@@ -104,7 +134,28 @@ function addEffectButtonFunction(){
     document.getElementById("addEffectButton").addEventListener("click", addEffectButtonFunction);
 }
 
+function removeEffect(effect) {
+    var index;
+    for (var i=0; i<EffectArray.length; i++){
+        if (EffectArray[i].effectName == effect.EffectName) {
+            index = i;
+            break;
+        }
+    }
+    console.log(EffectArray.length);
+    effect = EffectArray[index];
+    delete tremolo;
+    EffectArray.splice(index, 1);
+    console.log(EffectArray.length);
+    effectChain.removeEffectAt(index);
+    updateGUI(); 
+    for (var i=0; i<EffectArray.length; i++){
+        EffectArray[i].addListeners();
+    }
+    document.getElementById("addEffectButton").addEventListener("click", addEffectButtonFunction);
+}
 
+/*
 function insertIntoGUI(effect) {   
     var effectName = effect.effectName
     var paramID1 = effect.paramID1;
@@ -129,7 +180,8 @@ function insertIntoGUI(effect) {
     '   </div>';
     document.getElementById("effectPedalWindow").innerHTML += string;
 }
-
+*/
+/*
 function addListeners(effect) {
     var sliderID1 = effect.sliderID1;
     var paramID1 = effect.paramID1;
@@ -164,3 +216,4 @@ function addListeners(effect) {
     });
 
 }
+*/

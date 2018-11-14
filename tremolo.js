@@ -47,7 +47,7 @@ function Tremolo(thisContext) {
     oscillator.start(); 
     
     //insertTremoloIntoGUI();    
-    insertIntoGUI(this);
+    //insertIntoGUI(this);
     //document.getElementById(this.sliderID1).addEventListener("input", slider1Function);
     //    addListeners(this);
 
@@ -73,6 +73,11 @@ function Tremolo(thisContext) {
             document.getElementById(effectName + 'LED').className = "led";
             on = true;
         }
+    }
+
+    function xButtonFunction() {
+        console.log("Remove");
+        removeEffect(this);
     }
 /*
     document.getElementById(this.sliderID1).addEventListener("input", function() {
@@ -113,10 +118,11 @@ function Tremolo(thisContext) {
     Tremolo.prototype.addListeners = function() {
         document.getElementById(this.sliderID1).addEventListener("input", slider1Function);
         document.getElementById(this.effectName + 'OnOff').addEventListener("click", onOffButtonFunction);
+        document.getElementById(this.effectName + 'XButton').addEventListener("click", xButtonFunction);
     };
 
 }
-
+/*
 function insertTremoloIntoGUI() {   
     var string = 
     '   <div class="effectContainer">' +
@@ -134,3 +140,4 @@ function insertTremoloIntoGUI() {
     '   </div>';
     document.getElementById("effectPedalWindow").innerHTML += string;
 }
+*/

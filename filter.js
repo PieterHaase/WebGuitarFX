@@ -47,7 +47,7 @@ function Filter(thisContext) {
     dryGain.connect(this.outputGain);
     wetGain.connect(this.outputGain);
 
-    insertIntoGUI(this);
+    //insertIntoGUI(this);
     //addListeners(this);
 
     function slider1Function() {
@@ -113,7 +113,7 @@ function Filter(thisContext) {
         
     });
     */
-
+    /*
     function insertFilterIntoGUI() {   
         var string = 
         '   <div class="effectContainer">' +
@@ -131,7 +131,8 @@ function Filter(thisContext) {
         '   </div>';
         document.getElementById("effectPedalWindow").innerHTML += string;
     }    
-       
+    */   
+
     Filter.prototype.getInput = function() {
         return this.inputGain;
     };

@@ -6,9 +6,10 @@
     display: inline-block;
 }
 
-#filter {background-image: linear-gradient(rgb(96, 170, 255), rgb(26, 25, 95));}
-#tremolo {background-image: linear-gradient(rgb(255, 49, 94), rgb(82, 12, 29));}
-#delay {background-image: linear-gradient(rgb(223, 223, 223), rgb(63, 63, 63));}
+.Filter {background-image: linear-gradient(rgb(96, 170, 255), rgb(26, 25, 95));}
+.Tremolo {background-image: linear-gradient(rgb(255, 49, 94), rgb(82, 12, 29));}
+.Delay {background-image: linear-gradient(rgb(223, 223, 223), rgb(63, 63, 63));}
+.Distortion {background-image: linear-gradient(rgb(255, 241, 46), rgb(219, 161, 0));}
 
 .paramSlider1 {
     -webkit-appearance: none;

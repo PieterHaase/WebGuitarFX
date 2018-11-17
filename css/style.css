@@ -94,10 +94,10 @@ div {
     text-align: center;
     font-family: Impact;
     font-size: 3em;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.3);
     position: absolute;
     top: 50%;
-    right: 1em;
+    right: 3em;
     width: 1.2em;
     height: 1.2em;
     transform: translateY(-50%);

@@ -30,7 +30,7 @@ Diese sollen beliebig an- und ausgeschaltet, mit mehreren Parametern verändert 
 ### Bedienkonzept
 Die Bedienoberfläche soll aus einem großen Fenster bestehen, in welchem die verschiedenen Effekte zu einer Effektkette aneinandergereiht werden können. Jeder Effekt wird durch ein Panel dargestellt, welches vom Aussehen an ein Gitarreneffektgerät im Fußpedal-Format angelehnt sein soll. Dabei unterscheiden sich die Effekte optisch voneinander und sollen nach Möglichkeit an existierende Gitarreneffektgeräte erinnern um die Bedienung für Gitarristen intuitiver zu gestalten.
 
-![alt text](https://github.com/PieterHaase/WebGuitarFX/blob/gh-pages/UI_Mockup.png "Mockup des User-Interface")
+![alt text](https://github.com/PieterHaase/WebGuitarFX/blob/gh-pages/media/UI_Mockup.png "Mockup des User-Interface")
 
 Die Anordnung der Panels von links nach rechts soll dem Verlauf des Signalwegs entsprechen. Durch entsprechende Schaltflächen (Pfeile rechts und links) auf den Panels soll deren Reihenfolge frei verändert werden können.
 Auf den jeweiligen Panels finden sich Regler und Schalter zum Ein- und Ausschalten des Effekts und für die Einstellung von Effektparametern wie Hall-Länge, Modulationsfrequenz oder ähnlichem wieder, welche je nach Art des Effekts unterschiedlich sein können. Ganz rechts in der Effektkette befindet sich ein leeres Panel, mit dem sich ein neuer Effekt hinzufügen lässt. Die Auswahl der Art des Effekts der hinzugefügt werden soll, soll idealerweise durch ein Kontext-Menü erfolgen.

@@ -33,6 +33,7 @@ function updateGUI() {
     for (var i=0; i<EffectArray.length; i++){
         EffectArray[i].insertIntoGUI();
     }
+    document.getElementById("addEffectButton").addEventListener("click", addEffectButtonFunction);
 }
 
 function updateListeners() {
@@ -43,31 +44,85 @@ function updateListeners() {
 
 
 function addEffectButtonFunction(){
-    console.log("Add Effect");
+    document.getElementById("myDropdown").classList.toggle("show");
     //Distortion.prototype = new EffectPrototype(context, runningEffectID); 
-    Filter.prototype = new EffectPrototype(context, runningEffectID)
-    var filter = new Filter(context, runningEffectID);
+    //Filter.prototype = new EffectPrototype(context, runningEffectID)
+//    var filter = new Filter(context, runningEffectID);
     //var distortion = new Distortion(context, 1);
 //    console.log(distortion.paramID1);
-    EffectArray.push(filter);
-    effectChain.addEffect(filter);
+//    EffectArray.push(filter);
+    //effectChain.addEffect(filter);
+   /*  Delay.prototype = new EffectPrototype(context, runningEffectID);
+    var delay = new Delay(context, runningEffectID);
+    EffectArray.push(delay);
+    effectChain.addEffect(delay);
+ */
+}
+
+function dropdownFunction(effectType){
+    switch(effectType) {
+        case "Filter":
+        Filter.prototype = new EffectPrototype(context, runningEffectID)
+        var filter = new Filter(context, runningEffectID);    
+        EffectArray.push(filter);
+        effectChain.addEffect(filter);
+        break;
+        case "Delay":
+        Delay.prototype = new EffectPrototype(context, runningEffectID);
+        var delay = new Delay(context, runningEffectID);
+        EffectArray.push(delay);
+        effectChain.addEffect(delay);
+        break;
+        case "Distortion":
+        Distortion.prototype = new EffectPrototype(context, runningEffectID); 
+        var distortion = new Distortion(context, 1);
+        EffectArray.push(distortion);
+        effectChain.addEffect(distortion);
+        break;
+        case "Tremolo":
+        Tremolo.prototype = new EffectPrototype(context, runningEffectID); 
+        var tremolo = new Tremolo(context, 1);
+        EffectArray.push(tremolo);
+        effectChain.addEffect(tremolo);
+        break;
+    }
+    document.getElementById("myDropdown").classList.toggle("show");
     runningEffectID++;
     updateGUI();
     updateListeners();
-    document.getElementById("addEffectButton").addEventListener("click", addEffectButtonFunction);
 }
 
 function removeEffect(effect) {
     var index;
-    for (var i=0; i<EffectArray.length; i++){
-        console.log(EffectArray[i].effectID);
-    }
     index = EffectArray.indexOf(effect);
-    //effect = EffectArray[index];
-    //delete effect;
     EffectArray.splice(index, 1);
     effectChain.removeEffectAt(index);
     updateGUI(); 
     updateListeners();
-    document.getElementById("addEffectButton").addEventListener("click", addEffectButtonFunction);
+}
+
+function moveEffectLeft(effect) {
+    var index;
+    index = EffectArray.indexOf(effect);
+    if (index > 0){
+        var store = EffectArray[index-1];
+        EffectArray[index-1] = EffectArray[index];
+        EffectArray[index] = store;
+        effectChain.moveEffect(index, index-1);
+        updateGUI(); 
+        updateListeners();
+    }
+}
+
+function moveEffectRight(effect) {
+    var index;
+    index = EffectArray.indexOf(effect);
+    if (index < EffectArray.length-1){
+        var store = EffectArray[index+1];
+        EffectArray[index+1] = EffectArray[index];
+        EffectArray[index] = store;
+        effectChain.moveEffect(index, index+1);
+        updateGUI(); 
+        updateListeners();
+    }
 }

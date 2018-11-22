@@ -5,6 +5,8 @@
         <link rel="stylesheet" type="text/css" href="css/effectPedal.css">
     </head>
     <body>
+        
+        
     <!--    <h1 id="headline">WebGuitarFX</h1>  -->
         <div class="header"><h2>WebGuitarFX</h2></div>
         <div class="mainWindow">
@@ -13,10 +15,18 @@
             <div id="effectPedalWindow"></div>
             <div class="sidebarRight">
                 <div id="addEffectButton">+</div>
+                <div class="dropdown">
+<!--                    <button onclick="myFunction()" class="dropbtn">Dropdown</button>    -->
+                    <div id="myDropdown" class="dropdown-content">
+                        <div id="dropdownItem1" class="dropdownItem" onclick="dropdownFunction('Distortion')">Distortion</div>
+                        <div id="dropdownItem2" class="dropdownItem" onclick="dropdownFunction('Filter')">Filter</div>
+                        <div id="dropdownItem2" class="dropdownItem" onclick="dropdownFunction('Tremolo')">Tremolo</div>
+                        <div id="dropdownItem3" class="dropdownItem" onclick="dropdownFunction('Delay')">Delay</div>
+                    </div>
+                  </div>
             </div>
         </div>
         <div class="footer"></div>
-
         <script src="javascript/effectPrototype.js"></script>
         <script src="javascript/effects/distortion.js"></script>
         <script src="javascript/effects/filter.js"></script>
@@ -24,6 +34,5 @@
         <script src="javascript/effects/delay.js"></script>
         <script src="javascript/effectChain.js"></script>
         <script src="javascript/script.js"></script>
-
     </body>
 </html>

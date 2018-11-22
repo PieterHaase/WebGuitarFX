@@ -2,13 +2,12 @@
     position: relative;
     height: 100%;
     width: 18em;
-/*    float: left; */
     display: inline-block;
 }
 
 .Filter {background-image: linear-gradient(rgb(96, 170, 255), rgb(26, 25, 95));}
-.Tremolo {background-image: linear-gradient(rgb(255, 49, 94), rgb(82, 12, 29));}
-.Delay {background-image: linear-gradient(rgb(223, 223, 223), rgb(63, 63, 63));}
+.Tremolo {background-image: linear-gradient(rgb(197, 49, 255), rgb(66, 12, 82));}
+.Delay {background-image: linear-gradient(rgb(150, 150, 150), rgb(43, 43, 43));}
 .Distortion {background-image: linear-gradient(rgb(255, 241, 46), rgb(219, 161, 0));}
 
 .paramSlider1 {
@@ -30,14 +29,16 @@
     border: 2px solid #3f3f3f;
 }
 
+.paramSlider1::-webkit-slider-thumb:hover {
+    background: rgb(209, 209, 209);
+}
+
 .paramSlider1::-webkit-slider-runnable-track {
     height: 4px;
     -webkit-appearance: none;
     border-radius: 2px; 
     background: rgb(92, 92, 92);
 }
-
-
 
 .effectPedal {
     position: absolute;
@@ -158,4 +159,35 @@
 
 .onOffButton:hover {
     background-image: linear-gradient(rgb(241, 241, 241), rgb(156, 156, 156));
+}
+
+.arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent rgba(0,0,0,0.1) transparent transparent;
+}
+
+.leftArrow {
+    left: 20px;
+    border-width: 40px 20px 40px 0;
+    border-color: transparent rgba(0,0,0,0.1) transparent transparent;
+}
+
+.rightArrow {
+    top: 210px;
+    /*    left: .7em;
+        right: .7em; */
+    right: 20px;
+    border-width: 40px 0 40px 20px;
+    border-color: transparent transparent transparent rgba(0,0,0,0.1);
+}
+
+.leftArrow:hover {
+    border-color: transparent rgba(0,0,0,0.3) transparent transparent;
+}
+
+.rightArrow:hover {
+    border-color: transparent transparent transparent rgba(0,0,0,0.3);
 }

@@ -1,102 +1,46 @@
 
-
 function Delay(thisContext) {
-    var delay1;
-    var delay2;
-    var dryGain;
-    var wetGain;
-    var delayTime = 0.2;
+    this.setEffectType("Delay");
+    var effectLevel = 1;    
     var feedback = 0.4;
-    this.effectName = 'delay';
-    var effectName = this.effectName;
-    
-    this.paramID1 = 'delayTime';
-    var paramID1 = this.paramID1;
-    this.paramUnit1 = 'ms';
-    this.paramMin1 = 0;
-    this.paramMax1 = 1000;
-    this.paramValue1 = delayTime*1000;
-    this.sliderID1 = 'delayTimeSlider';
-    var sliderID1 = this.sliderID1;
+    var delayTime = {value: 0.2};
+    this.addParameter("Time", "s", 0, 1, delayTime, 0.01);
 
-    var on = true;
-
-    this.inputGain = thisContext.createGain();
-    this.inputGain.gain.value = 1;
-
-    this.outputGain = thisContext.createGain();
-    this.outputGain.gain.value = 1;
-
-    dryGain = thisContext.createGain();
-    dryGain.gain.value = 1;
-    
-    wetGain = thisContext.createGain();
-    wetGain.gain.value = 0.75;
-
-    delay1 = thisContext.createDelay(1);
-    delay1.delayTime.value = delayTime;
+    var delay1 = thisContext.createDelay(1);
+    delay1.delayTime.value = delayTime.value;
     var delay1Gain = thisContext.createGain();
-    delay1Gain.gain.value = 0.5;
+    delay1Gain.gain.value = effectLevel * feedback;
+    this.addNode(delay1);
+    this.addNode(delay1Gain);
 
-    delay2 = thisContext.createDelay(1);
-    delay2.delayTime.value = delayTime;
+    var delay2 = thisContext.createDelay(1);
+    delay2.delayTime.value = delayTime.value;
     var delay2Gain = thisContext.createGain();
-    delay2Gain.gain.value = 0.5 * feedback;
+    delay2Gain.gain.value = effectLevel * feedback;
+    this.addNode(delay2);
+    this.addNode(delay2Gain);
 
-    delay3 = thisContext.createDelay(1);
-    delay3.delayTime.value = delayTime;
+    var delay3 = thisContext.createDelay(1);
+    delay3.delayTime.value = delayTime.value;
     var delay3Gain = thisContext.createGain();
-    delay3Gain.gain.value = 0.5 * feedback;
+    delay3Gain.gain.value = effectLevel * feedback;
+    this.addNode(delay3);
+    this.addNode(delay3Gain);
 
-    this.inputGain.connect(dryGain);
-    dryGain.connect(this.outputGain);
-    this.inputGain.connect(delay1);
+    this.getInput().connect(delay1);
+    this.getInput().connect(this.getWetGain());
     delay1.connect(delay1Gain);
-    delay1Gain.connect(wetGain);
+    delay1Gain.connect(this.getWetGain());
     delay1Gain.connect(delay2);
     delay2.connect(delay2Gain);
-    delay2Gain.connect(wetGain);
+    delay2Gain.connect(this.getWetGain());
     delay2Gain.connect(delay3);
     delay3.connect(delay3Gain);
-    delay3Gain.connect(wetGain);
-    wetGain.connect(this.outputGain);
+    delay3Gain.connect(this.getWetGain());
 
-    //insertIntoGUI(this);
-
-    function slider1Function() {
-        delayTime = document.getElementById(sliderID1).value/1000;
-        if (on) {
-            delay1.delayTime.value = delayTime;
-            delay2.delayTime.value = delayTime;
-            delay3.delayTime.value = delayTime;
-        }
-        document.getElementById(paramID1).innerHTML = "time: " + delayTime*1000 + " ms";
-        //console.log("Tremolo Listener added");
-    }
-
-    function onOffButtonFunction() {
-        if (on){
-            wetGain.gain.value = 0;
-            dryGain.gain.value = 1;
-            document.getElementById(effectName + 'LED').className = "ledOff";
-            on = false;
-        }
-        else {
-            wetGain.gain.value = 0.25;
-            dryGain.gain.value = 0.75;
-            document.getElementById(effectName + 'LED').className = "led";
-            on = true;
-        }
-    }
-
-    Delay.prototype.getInput = function() {
-        return this.inputGain;
-    };
-    Delay.prototype.getOutput = function() {
-        return this.outputGain;
-    };
-    Delay.prototype.addListeners = function() {
-        document.getElementById(sliderID1).addEventListener("input", slider1Function);
-        document.getElementById(effectName + 'OnOff').addEventListener("click", onOffButtonFunction);
+    this.updateParameters = function() {
+        delay1.delayTime.value = delayTime.value;
+        delay2.delayTime.value = delayTime.value;
+        delay3.delayTime.value = delayTime.value;
     }
 }

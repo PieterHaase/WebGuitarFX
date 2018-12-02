@@ -39,6 +39,7 @@ function EffectPrototype(audioContext, id){
         }
     }
 
+
     // Definieren des Effekttypen, bspw. Tremolo, Filter, etc. (public)
     this.setEffectType = function(type) {
         effectType = type;
@@ -167,7 +168,24 @@ function EffectPrototype(audioContext, id){
         rightArrow.onclick = function() {
             moveEffectRight(thisEffect);
             console.log("RightArrow");
-        }
+        }/*
+        var pedal = document.getElementById(thisEffect.effectID);
+        pedal.addEventListener("mouseenter", function(event){
+            if(event.target === pedal){
+                document.getElementById(thisEffect.effectID + 'XButton').classList.toggle("visible");
+                document.getElementById(thisEffect.effectID + 'LeftArrow').classList.toggle("visible");
+                document.getElementById(thisEffect.effectID + 'RightArrow').classList.toggle("visible");
+                console.log("visible");
+            }
+        });
+        pedal.addEventListener("mouseout", function(event){
+            if(event.target == pedal){
+                document.getElementById(thisEffect.effectID + 'XButton').classList.toggle("invisible");
+                document.getElementById(thisEffect.effectID + 'LeftArrow').classList.toggle("invisible");
+                document.getElementById(thisEffect.effectID + 'RightArrow').classList.toggle("invisible");
+                console.log("invisible");
+            }
+        });*/
     }
 }
 

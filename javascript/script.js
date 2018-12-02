@@ -28,6 +28,8 @@ playButton.addEventListener("click", function () {
 document.getElementById("addEffectButton").addEventListener("click", addEffectButtonFunction);
 
 
+
+
 function updateGUI() {
     document.getElementById("effectPedalWindow").innerHTML = "";
     for (var i=0; i<EffectArray.length; i++){
@@ -45,6 +47,9 @@ function updateListeners() {
 
 function addEffectButtonFunction(){
     document.getElementById("myDropdown").classList.toggle("show");
+    document.getElementById("myDropdown").onmouseleave = function(){
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
     //Distortion.prototype = new EffectPrototype(context, runningEffectID); 
     //Filter.prototype = new EffectPrototype(context, runningEffectID)
 //    var filter = new Filter(context, runningEffectID);

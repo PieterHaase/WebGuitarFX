@@ -7,7 +7,7 @@
 
 .Filter {background-image: linear-gradient(rgb(96, 170, 255), rgb(26, 25, 95));}
 .Tremolo {background-image: linear-gradient(rgb(197, 49, 255), rgb(66, 12, 82));}
-.Delay {background-image: linear-gradient(rgb(150, 150, 150), rgb(43, 43, 43));}
+.Delay {background-image: linear-gradient(rgb(184, 184, 184), rgb(43, 43, 43));}
 .Distortion {background-image: linear-gradient(rgb(255, 241, 46), rgb(219, 161, 0));}
 
 .paramSlider1 {
@@ -63,6 +63,7 @@
 }
 
 .removeButton {
+    /*display: none;*/
     font-family: Tahoma;
     font-weight: bold;
     position: absolute;
@@ -170,12 +171,14 @@
 }
 
 .leftArrow {
+    /*display: none;*/
     left: 20px;
     border-width: 40px 20px 40px 0;
     border-color: transparent rgba(0,0,0,0.1) transparent transparent;
 }
 
 .rightArrow {
+    /*display: none;*/
     top: 210px;
     /*    left: .7em;
         right: .7em; */
@@ -190,4 +193,12 @@
 
 .rightArrow:hover {
     border-color: transparent transparent transparent rgba(0,0,0,0.3);
+}
+
+.visible {
+    display: block;
+}
+
+.invisible {
+    display: none;
 }

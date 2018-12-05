@@ -80,15 +80,21 @@ function dropdownFunction(effectType){
         break;
         case "Distortion":
         Distortion.prototype = new EffectPrototype(context, runningEffectID); 
-        var distortion = new Distortion(context, 1);
+        var distortion = new Distortion(context, runningEffectID);
         EffectArray.push(distortion);
         effectChain.addEffect(distortion);
         break;
         case "Tremolo":
         Tremolo.prototype = new EffectPrototype(context, runningEffectID); 
-        var tremolo = new Tremolo(context, 1);
+        var tremolo = new Tremolo(context, runningEffectID);
         EffectArray.push(tremolo);
         effectChain.addEffect(tremolo);
+        break;
+        case "Chorus":
+        Chorus.prototype = new EffectPrototype(context, runningEffectID); 
+        var chorus = new Chorus(context, runningEffectID);
+        EffectArray.push(chorus);
+        effectChain.addEffect(chorus);
         break;
     }
     document.getElementById("myDropdown").classList.toggle("show");

@@ -66,11 +66,11 @@ function addEffectButtonFunction(){
 
 function dropdownFunction(effectType){
     switch(effectType) {
-        case "Filter":
-        Filter.prototype = new EffectPrototype(context, runningEffectID)
-        var filter = new Filter(context, runningEffectID);    
-        EffectArray.push(filter);
-        effectChain.addEffect(filter);
+        case "ParamEQ":
+        ParamEQ.prototype = new EffectPrototype(context, runningEffectID)
+        var paramEQ = new ParamEQ(context, runningEffectID);    
+        EffectArray.push(paramEQ);
+        effectChain.addEffect(paramEQ);
         break;
         case "Delay":
         Delay.prototype = new EffectPrototype(context, runningEffectID);

@@ -17,9 +17,9 @@ function Chorus(audioContext) {
     oscillator.connect(gain);
     oscillator.start();
 
-    this.addParameter("Depth", "", 0, 10, depth, 0.1, depth);
-    this.addParameter("Time", "ms", 0, 50, delayTime, 1, delayTime);
-    this.addParameter("Rate", "", 0, 10, rate, 0.1, rate);
+    this.addParameter("Depth", "", 0, 10, depth, 0.1);
+    this.addParameter("Time", "ms", 0, 50, delayTime, 1);
+    this.addParameter("Rate", "", 0, 10, rate, 0.1);
 
     this.getInput().gain.value = 0.6;   
     gain.connect(delay.delayTime);

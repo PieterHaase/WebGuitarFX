@@ -119,6 +119,12 @@ function EffectPrototype(audioContext, id){
             var param0 = document.getElementById(parameter0.id);
             slider0.oninput = function() {
                 var value = this.value;
+                if (parameter0.step < 0.1){
+                    value = parseFloat(value).toFixed(2);
+                }
+                if (parameter0.step < 1 && p.step >= 0.1){
+                    value = parseFloat(value).toFixed(1);
+                }
                 param0.innerHTML = parameter0.name + ': ' + value + parameter0.unit;
                 parameter0.value.value = value;
                 updateParameters();
@@ -130,6 +136,12 @@ function EffectPrototype(audioContext, id){
             var param1 = document.getElementById(parameter1.id);
             slider1.oninput = function() {
                 var value = this.value;
+                if (parameter1.step < 0.1){
+                    value = parseFloat(value).toFixed(2);
+                }
+                if (parameter1.step < 1 && p.step >= 0.1){
+                    value = parseFloat(value).toFixed(1);
+                }
                 param1.innerHTML = parameter1.name + ': ' + value + parameter1.unit;
                 parameter1.value.value = value;
                 updateParameters();
@@ -141,6 +153,12 @@ function EffectPrototype(audioContext, id){
             var param2 = document.getElementById(parameter2.id);
             slider2.oninput = function() {
                 var value = this.value;
+                if (parameter2.step < 0.1){
+                    value = parseFloat(value).toFixed(2);
+                }
+                if (parameter2.step < 1 && p.step >= 0.1){
+                    value = parseFloat(value).toFixed(1);
+                }
                 param2.innerHTML = parameter2.name + ': ' + value + parameter2.unit;
                 parameter2.value.value = value;
                 updateParameters();

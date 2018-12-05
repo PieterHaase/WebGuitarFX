@@ -1,0 +1,207 @@
+.effectContainer {
+    position: relative;
+    height: 100%;
+    width: 18em;
+    display: inline-block;
+}
+
+.Filter {background-image: linear-gradient(rgb(155, 170, 255), rgb(58, 56, 150));}
+.Tremolo {background-image: linear-gradient(rgb(197, 49, 255), rgb(66, 12, 82));}
+.Delay {background-image: linear-gradient(rgb(184, 184, 184), rgb(43, 43, 43));}
+.Distortion {background-image: linear-gradient(rgb(255, 239, 10), rgb(219, 161, 0));}
+.Chorus {background-image: linear-gradient(rgb(81, 93, 255), rgb(42, 21, 70));}
+
+.paramSlider1 {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 30px;
+    background: none;
+    outline: none;
+}
+
+.paramSlider1::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 17px;
+    height: 17px;
+    margin-top: -5px;
+    border-radius: 50%; 
+    background: rgb(175, 175, 175);
+    border: 2px solid #3f3f3f;
+}
+
+.paramSlider1::-webkit-slider-thumb:hover {
+    background: rgb(209, 209, 209);
+}
+
+.paramSlider1::-webkit-slider-runnable-track {
+    height: 4px;
+    -webkit-appearance: none;
+    border-radius: 2px; 
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.effectPedal {
+    position: absolute;
+    top: 50%;
+/*    left: .7em;
+    right: .7em; */
+    transform: translateY(-50%);
+    margin-right: 2em;
+    margin-left: 2em;
+    /*float: left;  */
+    border-radius: 10px;
+    border: 2px solid rgb(31, 31, 31);
+/*    background-image: linear-gradient(rgb(96, 125, 255), rgb(42, 40, 161)); */
+    padding: 15px;
+    width: 12em;
+    height: 18em;
+    box-shadow: 5px 8px 10px rgba(0, 0, 0, .5); 
+}
+
+.effectPedal:hover{
+    box-shadow: 5px 8px 10px rgba(0, 0, 0, .5), 0px 0px 20px rgba(255, 255, 255, .2); 
+}
+
+.removeButton {
+    /*display: none;*/
+    font-family: Tahoma;
+    font-weight: bold;
+    position: absolute;
+    right: 0.3em;
+    top: 0.2em;
+    font-size: .9em;
+    text-align: center;
+    color: rgba(0,0,0,0.1);
+}
+
+.removeButton:hover {
+    color: rgba(0, 0, 0, .3);
+/*    text-shadow: 0px 0px 10px rgba(255, 255, 255, .9); */
+}
+
+.frontPanel {
+    height: 52%;
+    border-radius: 10px;
+    border: 2px solid rgb(31, 31, 31);
+    background-image: linear-gradient(rgb(201, 201, 201), rgb(110, 110, 110));
+    padding: 2px 15px;
+    
+}
+
+.effectTitle {
+    font-family: Impact;
+    font-variant: small-caps;
+    font-style: italic;
+    font-size: 2.1em;
+    color: white;
+    text-align: center;
+    margin-bottom: 2px;
+    -webkit-text-stroke: 2px rgb(75, 75, 75);
+    text-shadow: 0px 0px 15px rgb(0, 0, 0, 0.3);
+}
+
+.paramName1 {
+    font-family: Tahoma;
+    font-variant: small-caps;
+    font-size: .9em;
+    margin-bottom: -8px;
+    color: rgb(51, 51, 51);
+/*    font-family: Impact; */
+    font-style: italic;
+    -webkit-text-stroke: 1px rgb(65, 65, 65);
+}
+
+.paramSlider1 {
+    display: block;
+    margin: auto;
+    width: 100%;
+    padding: 2px;
+}
+
+.led {
+    border-radius:50%;
+    height: 0.8em;
+    width: 0.8em;
+    margin: auto;
+    margin-top: 5%;
+    border: 2px solid black;
+    background-image: linear-gradient(rgb(255, 104, 104), rgb(128, 25, 25));
+    box-shadow: 0px 0px 20px rgb(255, 0, 0); 
+}
+
+.ledOff {
+    border-radius:50%;
+    height: 0.8em;
+    width: 0.8em;
+    margin: auto;
+    margin-top: 5%;
+    border: 2px solid black;
+    background-image: linear-gradient(rgb(163, 47, 47), rgb(83, 17, 17));
+}
+
+.onOffButtonRing {
+    border-radius:50%;
+    height: 5em;
+    width: 5em;
+    margin: auto;
+    margin-top: 1em;
+    border: 2px solid rgb(56, 56, 56);
+    background-image: linear-gradient(rgb(179, 179, 179), rgb(92, 92, 92));
+}
+
+.onOffButton {
+    border-radius:50%;
+    height: 3.2em;
+    width: 3.2em;
+    margin: auto;
+    margin-top: 0.8em;
+    border: 2px solid rgb(56, 56, 56);
+    background-image: linear-gradient(rgb(211, 211, 211), rgb(146, 146, 146));
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, .5);
+}
+
+.onOffButton:hover {
+    background-image: linear-gradient(rgb(241, 241, 241), rgb(156, 156, 156));
+}
+
+.arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent rgba(0,0,0,0.1) transparent transparent;
+}
+
+.leftArrow {
+    /*display: none;*/
+    left: 20px;
+    border-width: 40px 20px 40px 0;
+    border-color: transparent rgba(0,0,0,0.1) transparent transparent;
+}
+
+.rightArrow {
+    /*display: none;*/
+    top: 210px;
+    /*    left: .7em;
+        right: .7em; */
+    right: 20px;
+    border-width: 40px 0 40px 20px;
+    border-color: transparent transparent transparent rgba(0,0,0,0.1);
+}
+
+.leftArrow:hover {
+    border-color: transparent rgba(0,0,0,0.3) transparent transparent;
+}
+
+.rightArrow:hover {
+    border-color: transparent transparent transparent rgba(0,0,0,0.3);
+}
+
+.visible {
+    display: block;
+}
+
+.invisible {
+    display: none;
+}

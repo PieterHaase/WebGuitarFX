@@ -1,0 +1,168 @@
+html, body {
+    background: rgb(27, 27, 27);
+    margin: 0;
+}
+
+::-webkit-scrollbar { height: 10px; }
+::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.0); }
+::-webkit-scrollbar-thumb { background: rgba(121, 121, 121, 0.2); border-radius: 5px;}
+::-webkit-scrollbar-thumb:hover { background: rgba(202, 202, 202, 0.2) }
+
+div {
+    -webkit-user-select: none;
+     -moz-user-select: -moz-none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.header {
+    position: absolute;
+    text-align: center;
+    float: center;
+    width: 100%;
+    height: 4em;
+    top: -1.3em;
+    background: rgb(27, 27, 27);
+    font-family: Tahoma;
+    font-style: italic;
+    font-variant: small-caps;
+    font-size: 2.3em;
+    color: white;
+    text-shadow: 0px 0px 10px black, 0px 0px 30px rgb(207, 207, 207); 
+}
+
+.mainWindow {
+    width: 100%;
+    position: absolute;
+    top: 4em;
+    bottom: 3em;
+}
+/*
+.sidebarLeft {
+    position: absolute;
+    height: 100%;
+    left: 0;
+    width: 6em;
+    color: white;
+    background: black;
+}
+*/
+#playButton {
+    border-radius:2px;
+    color: black;
+    text-align: center;
+ /*   text-decoration: none;
+    -webkit-text-stroke: 1px black;
+    text-shadow: 0px 0px 1px black;
+*/
+    font-family: Impact;
+    font-style: italic;
+    font-size: 1.3em;
+    padding: .1em .3em .3em 0;
+    background: rgb(63, 63, 63);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 1em;
+    width: 2.8em;
+    transform: translateY(-50%);
+}
+
+#playButton:hover {
+    background: rgb(121, 121, 121);
+}
+
+#playButton:active {
+    background: rgb(202, 202, 202);
+}
+
+#effectPedalWindow {
+    border-radius:5px;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    /*right: 6em;
+    left: 6em;*/
+    color: white;
+    background: rgb(63, 63, 63);
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+/*
+.sidebarRight {
+    position: absolute;
+    height: 100%;
+    right: 0;
+    width: 6em;
+    color: white;
+    background: black;
+}
+*/
+
+#addEffectButton {
+    border-radius:50%;
+    color: rgb(63, 63, 63);
+    text-align: center;
+    font-family: Impact;
+    font-size: 3em;
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 50%;
+    right: 1em;
+    width: 1.2em;
+    height: 1.2em;
+    transform: translateY(-50%);
+    box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.3);
+}
+
+#addEffectButton:hover {
+    background: rgba(121, 121, 121, 0.7);
+}
+
+#addEffectButton:active {
+    background: rgba(202, 202, 202, 0.7);
+}
+
+.dropdown-content {
+    border-radius:5px;
+    font-family: Tahoma;
+    font-size: 1em;
+    text-shadow: 0px 0px 15px black;
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: 8em;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: grey;
+    padding: 0.5em;
+        /* min-width: 160px; */
+    box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.3);
+    z-index: 1;
+}
+
+.dropdownItem {
+    padding: 0.5em;
+}
+
+.dropdownItem:hover {
+    color: white;
+}
+
+#dropdownDistortion:hover {text-shadow: 0px 0px 10px rgb(255, 187, 0); color: rgb(255, 187, 0);}
+#dropdownFilter:hover {text-shadow: 0px 0px 10px rgb(93, 136, 255); color: rgb(93, 136, 255);}
+#dropdownTremolo:hover {text-shadow: 0px 0px 10px rgb(186, 44, 230); color: rgb(186, 44, 230);}
+#dropdownDelay:hover {text-shadow: 0px 0px 10px rgb(150, 150, 150); color: rgb(150, 150, 150);}
+#dropdownChorus:hover {text-shadow: 0px 0px 10px rgb(56, 0, 211); color: rgb(73, 60, 255);}
+
+.show {display:block;}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    float: center;
+    width: 100%;
+    height: 3em;
+    background: rgb(27, 27, 27);
+}

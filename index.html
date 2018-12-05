@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>WebGuitarFX</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/effectPedal.css">
+    </head>
+    <body>
+        
+        
+    <!--    <h1 id="headline">WebGuitarFX</h1>  -->
+        <div class="header"><h2>WebGuitarFX</h2></div>
+        <div class="mainWindow">
+            <!--<div class="sidebarLeft"></div>-->
+            <div id="effectPedalWindow"></div>
+            <!--<div class="sidebarRight">-->
+                <div id="addEffectButton">+</div>
+                <div class="dropdown">
+<!--                    <button onclick="myFunction()" class="dropbtn">Dropdown</button>    -->
+                    <div id="myDropdown" class="dropdown-content">
+                        <div id="dropdownDistortion" class="dropdownItem" onclick="dropdownFunction('Distortion')">Distortion</div>
+                        <div id="dropdownFilter" class="dropdownItem" onclick="dropdownFunction('Filter')">Filter</div>
+                        <div id="dropdownTremolo" class="dropdownItem" onclick="dropdownFunction('Tremolo')">Tremolo</div>
+                        <div id="dropdownChorus" class="dropdownItem" onclick="dropdownFunction('Chorus')">Chorus</div>
+                        <div id="dropdownDelay" class="dropdownItem" onclick="dropdownFunction('Delay')">Delay</div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div id="playButton">PLAY</div>
+        </div>
+        <script src="javascript/effectPrototype.js"></script>
+        <script src="javascript/effects/chorus.js"></script>
+        <script src="javascript/effects/distortion.js"></script>
+        <script src="javascript/effects/filter.js"></script>
+        <script src="javascript/effects/tremolo.js"></script>
+        <script src="javascript/effects/delay.js"></script>
+        <script src="javascript/effectChain.js"></script>
+        <script src="javascript/script.js"></script>
+    </body>
+</html>

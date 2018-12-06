@@ -27,7 +27,7 @@ div {
     font-variant: small-caps;
     font-size: 2.3em;
     color: white;
-    text-shadow: 0px 0px 10px black, 0px 0px 30px rgb(207, 207, 207); 
+    text-shadow: 0px 0px 10px black, 0px 0px 20px rgb(137, 174, 255); 
 }
 
 .mainWindow {
@@ -46,9 +46,32 @@ div {
     background: black;
 }
 */
+#liveButton {
+    border-radius:2px;
+    text-align: center;
+    font-family: Impact;
+    font-style: italic;
+    font-size: 1.3em;
+    padding: .1em .3em .3em 0;
+    background: rgb(63, 63, 63);
+    position: absolute;
+    top: 50%;
+    left: 1em;
+    height: 1em;
+    width: 2.8em;
+    transform: translateY(-50%);
+}
+
+#liveButton:hover {
+    background: rgb(121, 121, 121);
+}
+
+#liveButton:active {
+    background: rgb(202, 202, 202);
+}
+
 #playButton {
     border-radius:2px;
-    color: black;
     text-align: center;
  /*   text-decoration: none;
     -webkit-text-stroke: 1px black;
@@ -156,6 +179,9 @@ div {
 #dropdownChorus:hover {text-shadow: 0px 0px 10px rgb(56, 0, 211); color: rgb(73, 60, 255);}
 
 .show {display:block;}
+
+.glowRed {color: rgb(255, 74, 74); text-shadow: 0px 0px 10px rgb(255, 60, 60); }
+.glowBlue {color: rgb(65, 141, 255); text-shadow: 0px 0px 10px rgb(65, 125, 255); }
 
 .footer {
     position: absolute;

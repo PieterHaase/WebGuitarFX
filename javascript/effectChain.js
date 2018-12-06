@@ -2,10 +2,11 @@
 //var source;
 
 
-function EffectChain(audioContext, source) {
+function EffectChain(audioContext, src) {
     //this.audioContext = audioContext;
     //this.source = source;
     var destination = audioContext.destination;
+    var source = src;
     source.connect(destination);
     var effectArray = [];                  // speichert die Effekte in der Effektkette
 
@@ -67,6 +68,16 @@ function EffectChain(audioContext, source) {
         var store = effectArray[toPosition];
         effectArray[toPosition] = effectArray[fromPosition];
         effectArray[fromPosition] = store;
+        updateRouting(destination);
+    }
+
+    this.updateSource = function(src) {
+        if(effectArray.length == 0) {
+            source.disconnect(destination);
+        } else {
+            source.disconnect(effectArray[0]);
+        }
+        source = src;
         updateRouting(destination);
     }
 

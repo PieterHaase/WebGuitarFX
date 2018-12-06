@@ -1,27 +1,58 @@
 var context = new AudioContext();
 var sound = new Audio("media/guitar_sample.mp3");
 var source = context.createMediaElementSource(sound);
+var liveInput;
+
+navigator.mediaDevices.getUserMedia({ audio: true, video: false})
+.then(function(stream) {
+//var context = new AudioContext();
+liveInput = context.createMediaStreamSource(stream);
+//liveInput.connect(context.destination);
+});
 
 sound.loop = true;
 
 var EffectArray = [];
 var runningEffectID = 0;
+var isPlaying = false;
+var isLive = false;
 
 //--- Effektkette
 var effectChain = new EffectChain(context, source);
 
+var liveButton = document.getElementById("liveButton");
 var playButton = document.getElementById("playButton");
-var isPlaying = false;
+
+liveButton.addEventListener("click", function () {
+    liveButton.classList.toggle("glowRed");
+    if (isLive) {
+        effectChain.updateSource(source);
+    } else {
+        if (isPlaying){
+            playButton.classList.toggle("glowBlue");
+            sound.pause();
+            isPlaying = false;
+        }
+        effectChain.updateSource(liveInput);
+    }
+    isLive = !isLive;
+    
+});
 
 playButton.addEventListener("click", function () {
+    playButton.classList.toggle("glowBlue");
     if (isPlaying) {
         sound.pause();
-        playButton.innerHTML = "PLAY";
+        //playButton.innerHTML = "PLAY";
     } else {
+        if (isLive) {
+            liveButton.classList.toggle("glowRed");
+            isLive =false;
+        }
+        effectChain.updateSource(source);
         sound.play();
-        playButton.innerHTML = "STOP";
+        //playButton.innerHTML = "STOP";
     }
-
     isPlaying = !isPlaying;
 });
 

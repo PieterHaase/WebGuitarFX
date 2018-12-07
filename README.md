@@ -3,8 +3,22 @@ WebGuitarFX
 
 [Link zur WebGuitarFX Website](https://pieterhaase.github.io/WebGuitarFX/index.html)
 
+### To do
+* Distortion überarbeiten
+* Input-Volume Regler
+* Input-dB Anzeige
+* Dropdown-Menu mit weiteren Gitarrensamples
+* Flanger
+* Vibrato
+* Compressor
+* GUI Feinschliff
+* Presets?
+* Latenz verringern?
+* Audio Nodes löschen?
+* Slider durch Drehknöpfe ersetzen
+
 ### Konzept
-Das Ziel dieses Projekts ist das Erstellen einer Website, auf der einem Audiosignal musikalische Effekte beigemischt werden können. Konkret geht es speziell um das Ausgangssignal einer an ei-nen Computer angeschlossenen E-Gitarre.
+Das Ziel dieses Projekts ist das Erstellen einer Website, auf der einem Audiosignal musikalische Effekte beigemischt werden können. Konkret geht es speziell um das Ausgangssignal einer an einen Computer angeschlossenen E-Gitarre.
 Diesem werden in der Musikproduktion häufig Effekte wie Filter, Verzerrung und Modulationseffekte beigemischt.
 	
 Diese Website soll optisch und von der Bedienung angelehnt an die Verwendung eines analogen „Effektboards“. Dies beschreibt in der Musikerwelt eine Ansammlung von Effektpedalen (die mit dem Fuß ein- und ausgeschaltet werden können, für die Verwendung im Live-Betrieb) die auf einem „Board“ montiert sind.

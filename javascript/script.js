@@ -3,11 +3,15 @@ var sound = new Audio("media/guitar_sample.mp3");
 var source = context.createMediaElementSource(sound);
 var liveInput;
 
+//--- Effektkette
+var effectChain = new EffectChain(context, source);
+var inputGain = context.createGain();
+
 navigator.mediaDevices.getUserMedia({ audio: true, video: false})
 .then(function(stream) {
 //var context = new AudioContext();
 liveInput = context.createMediaStreamSource(stream);
-//liveInput.connect(context.destination);
+liveInput.connect(inputGain);
 });
 
 sound.loop = true;
@@ -16,9 +20,8 @@ var EffectArray = [];
 var runningEffectID = 0;
 var isPlaying = false;
 var isLive = false;
-
-//--- Effektkette
-var effectChain = new EffectChain(context, source);
+var mute = false;
+var outputGainValue = 1;
 
 var liveButton = document.getElementById("liveButton");
 var playButton = document.getElementById("playButton");
@@ -33,10 +36,45 @@ liveButton.addEventListener("click", function () {
             sound.pause();
             isPlaying = false;
         }
-        effectChain.updateSource(liveInput);
+        effectChain.updateSource(inputGain);
     }
     isLive = !isLive;
     
+});
+
+var inputGainSlider = document.getElementById("inputGain");
+var outputGainSlider = document.getElementById("outputGain")
+
+inputGainSlider.addEventListener ('input', function () {
+    inputGain.gain.value = this.value;
+});
+outputGainSlider.addEventListener ('input', function () {
+    outputGainValue = this.value;
+    if(!mute){
+        effectChain.adjustOutputGain(this.value);
+    }
+});
+inputGainSlider.addEventListener ('dblclick', function () {
+    inputGain.gain.value = 1;
+    inputGainSlider.value = 1;
+});
+outputGainSlider.addEventListener ('dblclick', function () {
+    outputGainSlider.value = 1;
+    outputGainValue = 1;
+    if(!mute) {
+        effectChain.adjustOutputGain(outputGainValue);
+    }
+});
+
+var muteButton = document.getElementById("muteButton")
+muteButton.addEventListener ('click', function() {
+    if(!mute){
+        effectChain.adjustOutputGain(0);
+    } else {
+        effectChain.adjustOutputGain(outputGainValue);
+    }
+    mute = !mute;
+    muteButton.classList.toggle("glowGreen");
 });
 
 playButton.addEventListener("click", function () {

@@ -7,78 +7,83 @@ function EffectChain(audioContext, src) {
     //this.source = source;
     var destination = audioContext.destination;
     var source = src;
-    source.connect(destination);
+    var outputGain = audioContext.createGain();
+    outputGain.connect(destination);
+    source.connect(outputGain);
     var effectArray = [];                  // speichert die Effekte in der Effektkette
 
-
     // Erneuern sämtlicher Effekt-Verbindungen
-    var updateRouting = function(destination){
+    var updateRouting = function(){
         if (effectArray.length == 0) {
-            source.connect(destination);
+            source.connect(outputGain);
         }
         if (effectArray.length == 1) {
             //source.disconnect(destination);
             source.connect(effectArray[0].getInput());
-            effectArray[0].getOutput().connect(destination);
+            effectArray[0].getOutput().connect(outputGain);
         }
         if (effectArray.length > 1) {
             source.connect(effectArray[0].getInput());
             for (let i=0; i<effectArray.length-1; i++ ) {
                 effectArray[i].getOutput().connect(effectArray[i+1].getInput());
             }
-            effectArray[effectArray.length-1].getOutput().connect(destination);
+            effectArray[effectArray.length-1].getOutput().connect(outputGain);
         }
     }
     
     // Aufheben sämtlicher Effekt-Verbindungen
-    var disconnectAll = function(destination){
+    var disconnectAll = function(outputGain){
         if (effectArray.length == 1) {
-            //source.disconnect(destination);
+            //source.disconnect(outputGain);
             source.disconnect(effectArray[0].getInput());
-            effectArray[0].getOutput().disconnect(destination);
+            effectArray[0].getOutput().disconnect(outputGain);
         }
         if (effectArray.length > 1) {
             source.disconnect(effectArray[0].getInput());
             for (let i=0; i<effectArray.length-1; i++ ) {
                 effectArray[i].getOutput().disconnect(effectArray[i+1].getInput());
             }
-            effectArray[effectArray.length-1].getOutput().disconnect(destination);
+            effectArray[effectArray.length-1].getOutput().disconnect(outputGain);
         }
     }
 
     // Hinzufügen eines Effekts am Ende der Effektkette
     this.addEffect = function(effect) {
         if(effectArray.length == 0) {
-            source.disconnect(destination);
+            source.disconnect(outputGain);
         }
-        disconnectAll(destination);
+        disconnectAll(outputGain);
         effectArray.push(effect);
-        updateRouting(destination);
+        updateRouting();
     };
     
     // Entfernen eines Effekts aus der Effektkette an bestimmter Position
     this.removeEffectAt = function(position) {
-        disconnectAll(destination);
+        disconnectAll(outputGain);
         effectArray.splice(position, 1);
-        updateRouting(destination);
+        updateRouting();
     }
 
     this.moveEffect = function(fromPosition, toPosition) {
-        disconnectAll(destination);
+        disconnectAll(outputGain);
         var store = effectArray[toPosition];
         effectArray[toPosition] = effectArray[fromPosition];
         effectArray[fromPosition] = store;
-        updateRouting(destination);
+        updateRouting();
     }
 
     this.updateSource = function(src) {
         if(effectArray.length == 0) {
-            source.disconnect(destination);
+            source.disconnect(outputGain);
         } else {
             source.disconnect(effectArray[0]);
         }
         source = src;
-        updateRouting(destination);
+        updateRouting();
+    }
+
+    this.adjustOutputGain = function(gain){
+        outputGain.gain.value = gain;
     }
 
 /*  

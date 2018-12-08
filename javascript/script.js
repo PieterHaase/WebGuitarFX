@@ -6,13 +6,81 @@ var liveInput;
 //--- Effektkette
 var effectChain = new EffectChain(context, source);
 var inputGain = context.createGain();
+var analyser = context.createAnalyser();
+
 
 navigator.mediaDevices.getUserMedia({ audio: true, video: false})
 .then(function(stream) {
 //var context = new AudioContext();
 liveInput = context.createMediaStreamSource(stream);
 liveInput.connect(inputGain);
+inputGain.connect(analyser);
+
+visualize();
 });
+
+function visualize() {
+    var canvas = document.getElementById("inputMeter");
+    var canvasCtx = canvas.getContext("2d");
+    WIDTH = canvas.width;
+    HEIGHT = canvas.height;
+ 
+    analyser.fftSize = 256;
+    var bufferLengthAlt = analyser.frequencyBinCount;
+    console.log(bufferLengthAlt);
+    var dataArrayAlt = new Uint8Array(bufferLengthAlt);
+
+    canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
+
+    var drawAlt = function() {
+        drawVisual = requestAnimationFrame(drawAlt);
+        analyser.getByteFrequencyData(dataArrayAlt);
+    
+        canvasCtx.fillStyle = 'rgb(0, 0, 0)';
+        canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
+    
+        var barWidth;
+        var barHeight = HEIGHT;
+        var x = 0;
+        var maxValue = 0;
+    
+        for(var i = 0; i < bufferLengthAlt; i++) {
+            maxValue = Math.max(maxValue, dataArrayAlt[i]);
+        }
+        barWidth = maxValue;
+        if (isLive){
+            canvasCtx.fillStyle = 'rgba(255, 74, 74, 0.7)';
+            canvasCtx.fillRect(x,0,WIDTH*(barWidth/256),barHeight);
+        }      
+    };
+
+
+/*     var drawAlt = function() {
+      drawVisual = requestAnimationFrame(drawAlt);
+
+      analyser.getByteFrequencyData(dataArrayAlt);
+
+      canvasCtx.fillStyle = 'rgb(0, 0, 80)';
+      canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
+
+      var barWidth = WIDTH;
+      var barHeight;
+      var x = 0;
+
+      for(var i = 0; i < bufferLengthAlt; i++) {
+          var maxValue = 50;
+        maxValue = Math.max(maxValue, dataArrayAlt[i]);
+        barHeight = maxValue;
+
+        
+      }
+      console.log(maxValue);
+      canvasCtx.fillStyle = 'rgb(0,50,0)';
+        canvasCtx.fillRect(x,HEIGHT,barWidth,barHeight);
+    }; */
+
+    drawAlt();
+}
 
 sound.loop = true;
 
@@ -46,12 +114,22 @@ var inputGainSlider = document.getElementById("inputGain");
 var outputGainSlider = document.getElementById("outputGain")
 
 inputGainSlider.addEventListener ('input', function () {
-    inputGain.gain.value = this.value;
+    var value = this.value;
+    if(value >= 0.9 && value <= 1.1){
+        value = 1;
+        inputGainSlider.value = 1;
+    }
+    inputGain.gain.value = value;
 });
 outputGainSlider.addEventListener ('input', function () {
-    outputGainValue = this.value;
+    var value = this.value;
+    if(value >= 0.9 && value <= 1.1){
+        value = 1;
+        outputGainSlider.value = 1;
+    }
+    outputGainValue = value;
     if(!mute){
-        effectChain.adjustOutputGain(this.value);
+        effectChain.adjustOutputGain(value);
     }
 });
 inputGainSlider.addEventListener ('dblclick', function () {

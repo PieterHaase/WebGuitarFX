@@ -126,6 +126,20 @@ div {
     left: 8em;
 }
 
+.visualization {
+    border:2px solid black;
+    border-radius: 4px;
+    position :absolute;
+    width: 5em;
+    height: 1.3em;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#inputMeter {
+    left: 16em;
+}
+
 #outputGain {
     right: 8em;
 }

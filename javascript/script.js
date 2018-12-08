@@ -47,10 +47,13 @@ function visualize() {
         for(var i = 0; i < bufferLengthAlt; i++) {
             maxValue = Math.max(maxValue, dataArrayAlt[i]);
         }
-        barWidth = maxValue;
+        barWidth = WIDTH*(maxValue/256)
         if (isLive){
-            canvasCtx.fillStyle = 'rgba(255, 74, 74, 0.7)';
-            canvasCtx.fillRect(x,0,WIDTH*(barWidth/256),barHeight);
+            canvasCtx.fillStyle = 'rgba(0, 205, 50, 0.7)';
+            if(maxValue >= 250){
+                canvasCtx.fillStyle = 'rgba(255, 74, 74, 0.7)';
+            }
+            canvasCtx.fillRect(x,0,barWidth,barHeight);
         }      
     };
 

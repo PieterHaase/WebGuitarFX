@@ -4,8 +4,6 @@ WebGuitarFX
 [Link zur WebGuitarFX Website](https://pieterhaase.github.io/WebGuitarFX/index.html)
 
 ### To do
-* Distortion überarbeiten
-* Input-Volume Regler
 * Input-dB Anzeige
 * Dropdown-Menu mit weiteren Gitarrensamples
 * Flanger

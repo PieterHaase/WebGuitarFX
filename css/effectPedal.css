@@ -8,8 +8,9 @@
 .ParamEQ {background-image: linear-gradient(rgb(155, 170, 255), rgb(58, 56, 150));}
 .Tremolo {background-image: linear-gradient(rgb(197, 49, 255), rgb(66, 12, 82));}
 .Delay {background-image: linear-gradient(rgb(184, 184, 184), rgb(43, 43, 43));}
-.Distortion {background-image: linear-gradient(rgb(255, 239, 10), rgb(219, 161, 0));}
-.Chorus {background-image: linear-gradient(rgb(81, 93, 255), rgb(42, 21, 70));}
+.Distortion {background-image: linear-gradient(rgb(255, 239, 10), rgb(211, 172, 0));}
+.Chorus {background-image: linear-gradient(rgb(81, 93, 255), rgb(28, 21, 70));}
+.Flanger {background-image: linear-gradient(rgb(39, 236, 55), rgb(52, 137, 0));}
 
 .paramSlider1 {
     -webkit-appearance: none;
@@ -72,11 +73,11 @@
     top: 0.2em;
     font-size: .9em;
     text-align: center;
-    color: rgba(0,0,0,0.1);
+    color: rgba(0,0,0,0.2);
 }
 
 .removeButton:hover {
-    color: rgba(0, 0, 0, .3);
+    color: rgba(0, 0, 0, .35);
 /*    text-shadow: 0px 0px 10px rgba(255, 255, 255, .9); */
 }
 
@@ -102,7 +103,7 @@
 }
 
 .paramName1 {
-    font-family: Tahoma;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-variant: small-caps;
     font-size: .9em;
     margin-bottom: -8px;

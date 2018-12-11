@@ -21,6 +21,7 @@
                         <div id="dropdownParamEQ" class="dropdownItem" onclick="dropdownFunction('ParamEQ')">Parametric EQ</div>
                         <div id="dropdownTremolo" class="dropdownItem" onclick="dropdownFunction('Tremolo')">Tremolo</div>
                         <div id="dropdownChorus" class="dropdownItem" onclick="dropdownFunction('Chorus')">Chorus</div>
+                        <div id="dropdownFlanger" class="dropdownItem" onclick="dropdownFunction('Flanger')">Flanger</div>
                         <div id="dropdownDelay" class="dropdownItem" onclick="dropdownFunction('Delay')">Delay</div>
                     </div>
                   </div>
@@ -33,10 +34,20 @@
             <canvas class="visualization" id="inputMeter"></canvas>
             <input class="gainSlider" id="outputGain" type="range" min="0" max="1.4" value="1" step="0.01">
             <div class="button" id="muteButton">MUTE</div>
-            <div class="button" id="playButton">PLAY</div>
+            
+            <div id="playPanel">
+                <select id="sampleSelector">
+                        <option value="sample1">Sample1</option>
+                        <option value="sample2">Sample2</option>
+                        <option value="sample3">Sample3</option>
+                        <option value="sample4">Sample4</option>
+                        </select>
+                <div class="button" id="playButton">PLAY</div>
+            </div>
         </div>
         <script src="javascript/effectPrototype.js"></script>
         <script src="javascript/effects/chorus.js"></script>
+        <script src="javascript/effects/flanger.js"></script>
         <script src="javascript/effects/distortion.js"></script>
         <script src="javascript/effects/paramEQ.js"></script>
         <script src="javascript/effects/tremolo.js"></script>

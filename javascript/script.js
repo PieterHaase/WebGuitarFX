@@ -246,6 +246,12 @@ function dropdownFunction(effectType){
         EffectArray.push(chorus);
         effectChain.addEffect(chorus);
         break;
+        case "Flanger":
+        Flanger.prototype = new EffectPrototype(context, runningEffectID); 
+        var flanger = new Flanger(context, runningEffectID);
+        EffectArray.push(flanger);
+        effectChain.addEffect(flanger);
+        break;
     }
     document.getElementById("myDropdown").classList.toggle("show");
     runningEffectID++;

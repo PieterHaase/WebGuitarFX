@@ -26,8 +26,14 @@ var effectChain = new EffectChain(context, source);
 var inputGain = context.createGain();
 var analyser = context.createAnalyser();
 
-
-navigator.mediaDevices.getUserMedia({ audio: true, video: false})
+var constraints = {
+    audio: {
+      echoCancellation: false,
+      noiseSuppression: true,
+      autoGainControl: false,
+    }
+  };
+navigator.mediaDevices.getUserMedia(constraints)
 .then(function(stream) {
 //var context = new AudioContext();
 liveInput = context.createMediaStreamSource(stream);

@@ -9,6 +9,7 @@ WebGuitarFX
 * Vibrato
 * Compressor
 * GUI Feinschliff
+* 3-Band EQ?
 * Presets?
 * Latenz verringern?
 * Audio Nodes löschen?

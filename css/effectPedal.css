@@ -171,7 +171,7 @@
     width: 0;
     height: 0;
     border-style: solid;
-    border-color: transparent rgba(0,0,0,0.1) transparent transparent;
+    /*border-color: transparent rgba(0,0,0,0.1) transparent transparent;*/
 }
 
 .leftArrow {
@@ -183,7 +183,7 @@
 
 .rightArrow {
     /*display: none;*/
-    top: 210px;
+    top: 215px;
     /*    left: .7em;
         right: .7em; */
     right: 20px;

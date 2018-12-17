@@ -100,10 +100,10 @@ function EffectPrototype(audioContext, id){
         '          <div class="' + ledString + '" id="' + this.effectID + 'LED"></div>' +
         '          <div class="lowerPanel">' + 
         '              <div class="arrow leftArrow" id="' + this.effectID + 'LeftArrow"></div>' +
+        '              <div class="arrow rightArrow" id="' + this.effectID + 'RightArrow"></div>' +
         '              <div class="onOffButtonRing">' +
         '                  <div class="onOffButton" id="' + this.effectID + 'OnOff"></div>' +
-        '               </div>' +
-        '              <div class="arrow rightArrow" id="' + this.effectID + 'RightArrow"></div>' +
+        '               </div>' +  
         '          </div>' +
         '      </div>' +
         '   </div>';

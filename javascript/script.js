@@ -297,6 +297,12 @@ function dropdownFunction(effectType){
         EffectArray.push(compressor);
         effectChain.addEffect(compressor);
         break;
+        case "Vibrato":
+        Vibrato.prototype = new EffectPrototype(context, runningEffectID); 
+        var vibrato = new Vibrato(context, runningEffectID);
+        EffectArray.push(vibrato);
+        effectChain.addEffect(vibrato);
+        break;
     }
     document.getElementById("myDropdown").classList.toggle("show");
     runningEffectID++;

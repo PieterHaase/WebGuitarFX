@@ -4,9 +4,8 @@ WebGuitarFX
 [Link zur WebGuitarFX Website](https://pieterhaase.github.io/WebGuitarFX/index.html)
 
 ### To do
-* Input-dB Anzeige
-* Dropdown-Menu mit weiteren Gitarrensamples
-* Flanger
+* Solo 1 Sample fixen
+* Plakat
 * Vibrato
 * Compressor
 * GUI Feinschliff

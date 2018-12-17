@@ -1,6 +1,24 @@
 var context = new AudioContext();
-var sound = new Audio("media/guitar_sample.mp3");
-var source = context.createMediaElementSource(sound);
+
+var sampleArray = [];
+sampleArray[0] = new Audio("media/ballad_1.mp3");
+sampleArray[1] = new Audio("media/ballad_2.mp3");
+sampleArray[2] = new Audio("media/rock_1.mp3");
+sampleArray[3] = new Audio("media/rock_2.mp3");
+sampleArray[4] = new Audio("media/rock_3.mp3");
+sampleArray[5] = new Audio("media/metal_1.mp3");
+sampleArray[6] = new Audio("media/metal_2.mp3");
+sampleArray[7] = new Audio("media/solo_1.mp3");
+sampleArray[8] = new Audio("media/solo_2.mp3");
+var activeSampleNr = 0;
+
+var sourceArray = [];
+for(var i = 0; i < sampleArray.length; i++) {
+    sampleArray[i].loop = true;
+    sourceArray[i] = context.createMediaElementSource(sampleArray[i]);
+}
+
+var source = sourceArray[0];
 var liveInput;
 
 //--- Effektkette
@@ -27,7 +45,6 @@ function visualize() {
  
     analyser.fftSize = 256;
     var bufferLengthAlt = analyser.frequencyBinCount;
-    console.log(bufferLengthAlt);
     var dataArrayAlt = new Uint8Array(bufferLengthAlt);
 
     canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
@@ -85,8 +102,6 @@ function visualize() {
     drawAlt();
 }
 
-sound.loop = true;
-
 var EffectArray = [];
 var runningEffectID = 0;
 var isPlaying = false;
@@ -104,7 +119,7 @@ liveButton.addEventListener("click", function () {
     } else {
         if (isPlaying){
             playButton.classList.toggle("glowBlue");
-            sound.pause();
+            sampleArray[activeSampleNr].pause();
             isPlaying = false;
         }
         effectChain.updateSource(inputGain);
@@ -147,6 +162,40 @@ outputGainSlider.addEventListener ('dblclick', function () {
     }
 });
 
+var sampleSelector = document.getElementById("sampleSelector");
+sampleSelector.addEventListener("change", function(){
+    if (isPlaying) {
+        playButton.classList.toggle("glowBlue");
+        isPlaying = !isPlaying;
+        sampleArray[activeSampleNr].pause();
+    }
+    var selection = sampleSelector.selectedIndex;
+    activeSampleNr = selection;
+    //source = sourceArray[selection];
+    //effectChain.updateSource(source);
+});
+
+playButton.addEventListener("click", function () {
+    playButton.classList.toggle("glowBlue");
+    if (isPlaying) {
+        sampleArray[activeSampleNr].pause();
+        //sampleArray[activeSampleNr].fastSeek(0);
+        //playButton.innerHTML = "PLAY";
+    } else {
+        if (isLive) {
+            liveButton.classList.toggle("glowRed");
+            isLive =false;
+        }
+        source = sourceArray[activeSampleNr];
+        effectChain.updateSource(source);
+        sampleArray[activeSampleNr].play();
+        console.log("Playing: " + activeSampleNr);
+        //playButton.innerHTML = "STOP";
+    }
+    isPlaying = !isPlaying;
+});
+
+
 var muteButton = document.getElementById("muteButton")
 muteButton.addEventListener ('click', function() {
     if(!mute){
@@ -158,22 +207,6 @@ muteButton.addEventListener ('click', function() {
     muteButton.classList.toggle("glowGreen");
 });
 
-playButton.addEventListener("click", function () {
-    playButton.classList.toggle("glowBlue");
-    if (isPlaying) {
-        sound.pause();
-        //playButton.innerHTML = "PLAY";
-    } else {
-        if (isLive) {
-            liveButton.classList.toggle("glowRed");
-            isLive =false;
-        }
-        effectChain.updateSource(source);
-        sound.play();
-        //playButton.innerHTML = "STOP";
-    }
-    isPlaying = !isPlaying;
-});
 
 document.getElementById("addEffectButton").addEventListener("click", addEffectButtonFunction);
 

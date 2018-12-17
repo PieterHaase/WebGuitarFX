@@ -39,7 +39,7 @@ function Distortion(audioContext, id) {
         return curve;
       };
       
-    distortion.curve = makeDistortionCurve(gain.value*20);
+    distortion.curve = makeDistortionCurve(gain.value*200);
     distortion.oversample = '4x';
 
     var filter3 = this.audioContext.createBiquadFilter();
@@ -54,7 +54,7 @@ function Distortion(audioContext, id) {
     this.addParameter("Treble", "", 0, 10, treble, .1);
 
     this.updateParameters = function(){
-        distortion.curve = makeDistortionCurve(gain.value*20);
+        distortion.curve = makeDistortionCurve(gain.value*200);
         filter1.frequency.value = 550 + tone.value * 20;
         filter3.gain.value = treble.value - 20;
     }

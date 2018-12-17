@@ -6,12 +6,12 @@ WebGuitarFX
 ### To do
 * Solo 1 Sample fixen
 * Plakat
+* Latenz verringern?
 * Vibrato
 * Compressor
 * GUI Feinschliff
 * 3-Band EQ?
 * Presets?
-* Latenz verringern?
 * Audio Nodes löschen?
 * Slider durch Drehknöpfe ersetzen
 

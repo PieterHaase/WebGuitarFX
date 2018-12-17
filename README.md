@@ -4,13 +4,7 @@ WebGuitarFX
 [Link zur WebGuitarFX Website](https://pieterhaase.github.io/WebGuitarFX/index.html)
 
 ### To do
-* Solo 1 Sample fixen
-* Plakat
 * Latenz verringern?
-* Vibrato
-* Compressor
-* GUI Feinschliff
-* 3-Band EQ?
 * Presets?
 * Audio Nodes löschen?
 * Slider durch Drehknöpfe ersetzen

@@ -291,6 +291,12 @@ function dropdownFunction(effectType){
         EffectArray.push(flanger);
         effectChain.addEffect(flanger);
         break;
+        case "Compressor":
+        Compressor.prototype = new EffectPrototype(context, runningEffectID); 
+        var compressor = new Compressor(context, runningEffectID);
+        EffectArray.push(compressor);
+        effectChain.addEffect(compressor);
+        break;
     }
     document.getElementById("myDropdown").classList.toggle("show");
     runningEffectID++;

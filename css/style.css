@@ -270,6 +270,7 @@ div {
     color: white;
 }
 
+#dropdownCompressor:hover {text-shadow: 0px 0px 10px rgb(255, 255, 255); color: rgb(255, 255, 255);}
 #dropdownDistortion:hover {text-shadow: 0px 0px 10px rgb(255, 187, 0); color: rgb(255, 187, 0);}
 #dropdownParamEQ:hover {text-shadow: 0px 0px 10px rgb(93, 136, 255); color: rgb(93, 136, 255);}
 #dropdownTremolo:hover {text-shadow: 0px 0px 10px rgb(186, 44, 230); color: rgb(186, 44, 230);}

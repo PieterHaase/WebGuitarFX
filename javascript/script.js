@@ -291,6 +291,24 @@ function dropdownFunction(effectType){
         EffectArray.push(flanger);
         effectChain.addEffect(flanger);
         break;
+        case "Compressor":
+        Compressor.prototype = new EffectPrototype(context, runningEffectID); 
+        var compressor = new Compressor(context, runningEffectID);
+        EffectArray.push(compressor);
+        effectChain.addEffect(compressor);
+        break;
+        case "Vibrato":
+        Vibrato.prototype = new EffectPrototype(context, runningEffectID); 
+        var vibrato = new Vibrato(context, runningEffectID);
+        EffectArray.push(vibrato);
+        effectChain.addEffect(vibrato);
+        break;
+        case "ThreeBandEQ":
+        ThreeBandEQ.prototype = new EffectPrototype(context, runningEffectID); 
+        var threeBandEQ = new ThreeBandEQ(context, runningEffectID);
+        EffectArray.push(threeBandEQ);
+        effectChain.addEffect(threeBandEQ);
+        break;
     }
     document.getElementById("myDropdown").classList.toggle("show");
     runningEffectID++;

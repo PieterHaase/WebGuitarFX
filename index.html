@@ -17,9 +17,12 @@
                 <div class="dropdown">
 <!--                    <button onclick="myFunction()" class="dropbtn">Dropdown</button>    -->
                     <div id="myDropdown" class="dropdown-content">
+                            <div id="dropdownCompressor" class="dropdownItem" onclick="dropdownFunction('Compressor')">Compressor</div>
                         <div id="dropdownDistortion" class="dropdownItem" onclick="dropdownFunction('Distortion')">Distortion</div>
                         <div id="dropdownParamEQ" class="dropdownItem" onclick="dropdownFunction('ParamEQ')">Parametric EQ</div>
+                        <div id="dropdownThreeBandEQ" class="dropdownItem" onclick="dropdownFunction('ThreeBandEQ')">3-Band EQ</div>
                         <div id="dropdownTremolo" class="dropdownItem" onclick="dropdownFunction('Tremolo')">Tremolo</div>
+                        <div id="dropdownVibrato" class="dropdownItem" onclick="dropdownFunction('Vibrato')">Vibrato</div>
                         <div id="dropdownChorus" class="dropdownItem" onclick="dropdownFunction('Chorus')">Chorus</div>
                         <div id="dropdownFlanger" class="dropdownItem" onclick="dropdownFunction('Flanger')">Flanger</div>
                         <div id="dropdownDelay" class="dropdownItem" onclick="dropdownFunction('Delay')">Delay</div>
@@ -55,8 +58,11 @@
         <script src="javascript/effects/flanger.js"></script>
         <script src="javascript/effects/distortion.js"></script>
         <script src="javascript/effects/paramEQ.js"></script>
+        <script src="javascript/effects/threeBandEQ.js"></script>
         <script src="javascript/effects/tremolo.js"></script>
         <script src="javascript/effects/delay.js"></script>
+        <script src="javascript/effects/compressor.js"></script>
+        <script src="javascript/effects/vibrato.js"></script>
         <script src="javascript/effectChain.js"></script>
         <script src="javascript/script.js"></script>
     </body>

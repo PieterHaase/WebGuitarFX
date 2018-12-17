@@ -29,7 +29,7 @@ var analyser = context.createAnalyser();
 var constraints = {
     audio: {
       echoCancellation: false,
-      noiseSuppression: false,
+      noiseSuppression: true,
       autoGainControl: false,
     }
   };

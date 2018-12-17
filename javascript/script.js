@@ -303,6 +303,12 @@ function dropdownFunction(effectType){
         EffectArray.push(vibrato);
         effectChain.addEffect(vibrato);
         break;
+        case "ThreeBandEQ":
+        ThreeBandEQ.prototype = new EffectPrototype(context, runningEffectID); 
+        var threeBandEQ = new ThreeBandEQ(context, runningEffectID);
+        EffectArray.push(threeBandEQ);
+        effectChain.addEffect(threeBandEQ);
+        break;
     }
     document.getElementById("myDropdown").classList.toggle("show");
     runningEffectID++;

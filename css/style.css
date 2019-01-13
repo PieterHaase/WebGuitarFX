@@ -27,7 +27,6 @@ div {
     font-variant: small-caps;
     font-size: 2.3em;
     color: white;
-    /*-webkit-text-stroke: 2px rgba(0, 0, 0, 0.2);*/
     text-shadow: 0px 0px 4px black, 0px 0px 40px rgb(0, 174, 255); 
 }
 
@@ -37,16 +36,6 @@ div {
     top: 4em;
     bottom: 3em;
 }
-/*
-.sidebarLeft {
-    position: absolute;
-    height: 100%;
-    left: 0;
-    width: 6em;
-    color: white;
-    background: black;
-}
-*/
 
 .button {
     border: 1px solid rgba(0, 0, 0, 0.8);
@@ -201,24 +190,12 @@ div {
     position: absolute;
     height: 100%;
     width: 100%;
-    /*right: 6em;
-    left: 6em;*/
     color: white;
     background: rgb(63, 63, 63);
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
 }
-/*
-.sidebarRight {
-    position: absolute;
-    height: 100%;
-    right: 0;
-    width: 6em;
-    color: white;
-    background: black;
-}
-*/
 
 #addEffectButton {
     border-radius:50%;
@@ -257,7 +234,6 @@ div {
     background-color: rgba(0,0,0,0.5);
     color: grey;
     padding: 0.5em;
-        /* min-width: 160px; */
     box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.3);
     z-index: 1;
 }

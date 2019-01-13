@@ -1,24 +1,23 @@
-//var audioContext;
-//var source;
-
 
 function EffectChain(audioContext, src) {
-    //this.audioContext = audioContext;
-    //this.source = source;
-    var destination = audioContext.destination;
+
     var source = src;
+    var destination = audioContext.destination;
+    var effectArray = [];                  // speichert die Effekte in der Effektkette
+    
+    // Output Gain für die Gesamtlautstärke
     var outputGain = audioContext.createGain();
+
+    // Verbinden der Auido-Nodes
     outputGain.connect(destination);
     source.connect(outputGain);
-    var effectArray = [];                  // speichert die Effekte in der Effektkette
-
+    
     // Erneuern sämtlicher Effekt-Verbindungen
     var updateRouting = function(){
         if (effectArray.length == 0) {
             source.connect(outputGain);
         }
         if (effectArray.length == 1) {
-            //source.disconnect(destination);
             source.connect(effectArray[0].getInput());
             effectArray[0].getOutput().connect(outputGain);
         }
@@ -34,7 +33,6 @@ function EffectChain(audioContext, src) {
     // Aufheben sämtlicher Effekt-Verbindungen
     var disconnectAll = function(outputGain){
         if (effectArray.length == 1) {
-            //source.disconnect(outputGain);
             source.disconnect(effectArray[0].getInput());
             effectArray[0].getOutput().disconnect(outputGain);
         }
@@ -64,6 +62,7 @@ function EffectChain(audioContext, src) {
         updateRouting();
     }
 
+    // Verschieben der Effekte innerhalb der Effektkette
     this.moveEffect = function(fromPosition, toPosition) {
         disconnectAll(outputGain);
         var store = effectArray[toPosition];
@@ -72,6 +71,7 @@ function EffectChain(audioContext, src) {
         updateRouting();
     }
 
+    // Ändern der Auidoqulle
     this.updateSource = function(src) {
         if(effectArray.length == 0) {
             source.disconnect(outputGain);
@@ -82,15 +82,10 @@ function EffectChain(audioContext, src) {
         updateRouting();
     }
 
+    // Ändern der Gesamtlautstärke
     this.adjustOutputGain = function(gain){
         outputGain.gain.value = gain;
     }
-
-/*  
-    this.getOutput = function() {
-        return effectArray[0].getOutput();
-    };
-*/
 }
 
 

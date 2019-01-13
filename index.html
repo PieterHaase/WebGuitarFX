@@ -1,23 +1,27 @@
 <html>
     <head>
         <title>WebGuitarFX</title>
+
+        <!-- Einbinden der CSS-Dateien -->
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <link rel="stylesheet" type="text/css" href="css/effectPedal.css">
     </head>
     <body>
         
-        
-    <!--    <h1 id="headline">WebGuitarFX</h1>  -->
+        <!-- Webseiten Titel / Header -->
         <div class="header"><h2>WebGuitarFX</h2></div>
+
+        <!-- Hauptfenster -->
         <div class="mainWindow">
-            <!--<div class="sidebarLeft"></div>-->
+
+            <!-- Fenster für die Darstellung der Effektpedale -->
             <div id="effectPedalWindow"></div>
-            <!--<div class="sidebarRight">-->
                 <div id="addEffectButton">+</div>
+
+                <!-- Dropdown-Menü für das Hinzufügen von Effekten -->
                 <div class="dropdown">
-<!--                    <button onclick="myFunction()" class="dropbtn">Dropdown</button>    -->
                     <div id="myDropdown" class="dropdown-content">
-                            <div id="dropdownCompressor" class="dropdownItem" onclick="dropdownFunction('Compressor')">Compressor</div>
+                        <div id="dropdownCompressor" class="dropdownItem" onclick="dropdownFunction('Compressor')">Compressor</div>
                         <div id="dropdownDistortion" class="dropdownItem" onclick="dropdownFunction('Distortion')">Distortion</div>
                         <div id="dropdownParamEQ" class="dropdownItem" onclick="dropdownFunction('ParamEQ')">Parametric EQ</div>
                         <div id="dropdownThreeBandEQ" class="dropdownItem" onclick="dropdownFunction('ThreeBandEQ')">3-Band EQ</div>
@@ -30,14 +34,20 @@
                   </div>
             </div>
         </div>
+
+        <!-- Leiste unter dem Effektfenster für die Bedienung -->
         <div class="footer">
+
+            <!-- Live-Input -->
             <div class="button" id="liveButton">LIVE</div>
-<!--            <div id= "inputGainText">Input Gain:</div>  -->
             <input class="gainSlider" id="inputGain" type="range" min="0" max="1.4" value="1" step="0.01">
             <canvas class="visualization" id="inputMeter"></canvas>
+
+            <!-- Mute & Output Gain-->
             <input class="gainSlider" id="outputGain" type="range" min="0" max="1.4" value="1" step="0.01">
             <div class="button" id="muteButton">MUTE</div>
             
+            <!-- Live-Input -->
             <div id="playPanel">
                 <select id="sampleSelector">
                         <option value="sample1">Ballad 1</option>
@@ -53,17 +63,22 @@
                 <div class="button" id="playButton">PLAY</div>
             </div>
         </div>
-        <script src="javascript/effectPrototype.js"></script>
-        <script src="javascript/effects/chorus.js"></script>
-        <script src="javascript/effects/flanger.js"></script>
-        <script src="javascript/effects/distortion.js"></script>
-        <script src="javascript/effects/paramEQ.js"></script>
-        <script src="javascript/effects/threeBandEQ.js"></script>
-        <script src="javascript/effects/tremolo.js"></script>
-        <script src="javascript/effects/delay.js"></script>
-        <script src="javascript/effects/compressor.js"></script>
-        <script src="javascript/effects/vibrato.js"></script>
-        <script src="javascript/effectChain.js"></script>
-        <script src="javascript/script.js"></script>
+
+    <!-- Einbinden der JavaScript-Dateien -->
+    <script src="javascript/effectGUI.js"></script>
+    <script src="javascript/effectPrototype.js"></script>
+    <script src="javascript/effects/chorus.js"></script>
+    <script src="javascript/effects/flanger.js"></script>
+    <script src="javascript/effects/distortion.js"></script>
+    <script src="javascript/effects/paramEQ.js"></script>
+    <script src="javascript/effects/threeBandEQ.js"></script>
+    <script src="javascript/effects/tremolo.js"></script>
+    <script src="javascript/effects/delay.js"></script>
+    <script src="javascript/effects/compressor.js"></script>
+    <script src="javascript/effects/vibrato.js"></script>
+    <script src="javascript/effectChain.js"></script>
+    <script src="javascript/inputMeter.js"></script>
+    <script src="javascript/GUI.js"></script>
+    <script src="javascript/script.js"></script>
     </body>
 </html>

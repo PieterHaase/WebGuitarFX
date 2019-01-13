@@ -3,12 +3,6 @@ WebGuitarFX
 
 [Link zur WebGuitarFX Website](https://pieterhaase.github.io/WebGuitarFX/index.html)
 
-### To do
-* Latenz verringern?
-* Presets?
-* Audio Nodes löschen?
-* Slider durch Drehknöpfe ersetzen
-
 ### Konzept
 Das Ziel dieses Projekts ist das Erstellen einer Website, auf der einem Audiosignal musikalische Effekte beigemischt werden können. Konkret geht es speziell um das Ausgangssignal einer an einen Computer angeschlossenen E-Gitarre.
 Diesem werden in der Musikproduktion häufig Effekte wie Filter, Verzerrung und Modulationseffekte beigemischt.
